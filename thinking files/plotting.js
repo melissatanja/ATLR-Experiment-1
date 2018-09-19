@@ -18,7 +18,7 @@ function draw(){
 	orbitControl();
 
 	// noFill();
-	// translate(-200, 0, 250);
+	translate(-100, 0, 250);
 	// beginShape();
 	// vertex(xpos[87], ypos, zpos[86]);
 	// vertex(xpos[86], ypos - 5, zpos[86]);
@@ -49,7 +49,7 @@ function draw(){
 
 	spine();
 
-	triangles();
+	triangles1();
 
 	// triangle(xpos[30], 50, xpos[31], 50, xpos[30], 40);
 	// rotateY(-PI/10);
@@ -58,39 +58,130 @@ function draw(){
 	// triangle(xpos[30], 50, xpos[31], 50, xpos[30], 40);
 }
 
-function triangles(){
+function triangles1(){
 
-	for(var i = 1; i < 66; i++){
+	for(var i = 1; i < 66; i += 2){
 		if(i < 23){
 
-			noFill();
-			translate(-200, 0, 250);
+			fill(0, 0, 0);
+			stroke(0, 0, 0, 10);
+
 			beginShape();
-			vertex(xpos[i], ypos, zpos[i] + (2 * i));
-			vertex(xpos[i + 1], ypos - ((i/2) + 4), zpos[i + 1]);
-			vertex(xpos[i + 2], ypos, zpos[i + 2] + (2 * i));
-			vertex(xpos[i], ypos, zpos[i] + (2 * i));
+			vertex(xpos[i + 1], ypos, zpos[i + 1] + (i * 1.25));
+			vertex(xpos[i + 2], ypos - ((i/2) + 4), zpos[i + 2]);
+			vertex(xpos[i + 3], ypos, zpos[i + 3] + (i * 1.25));
+			// vertex(xpos[i], ypos, zpos[i] + 16);
 			endShape();
 
 			beginShape();
-			vertex(xpos[i], ypos, zpos[i] - (2 * i));
-			vertex(xpos[i + 1], ypos - ((i/2) + 4), zpos[i + 1]);
-			vertex(xpos[i + 2], ypos, zpos[i + 2] - (2 * i));
-			vertex(xpos[i], ypos, zpos[i] - (2 * i));
+			vertex(xpos[i + 1], ypos, zpos[i + 1] - (i * 1.25));
+			vertex(xpos[i + 2], ypos - ((i/2) + 4), zpos[i + 2]);
+			vertex(xpos[i + 3], ypos, zpos[i + 3] - (i * 1.25));
+			// vertex(xpos[i], ypos, zpos[i] - (i * 1.25));
 			endShape();
 
 			beginShape();
-			vertex(xpos[i], ypos, zpos[i] + (2 * i));
-			vertex(xpos[i + 1], ypos + (((i/2) + 4)/4), zpos[i + 1]);
-			vertex(xpos[i + 2], ypos, zpos[i + 2] + (2 * i));
-			vertex(xpos[i], ypos, zpos[i] + (2 * i));
+			vertex(xpos[i + 1], ypos, zpos[i + 1] + (i * 1.25));
+			vertex(xpos[i + 2], ypos + (((i/2) + 4)/4), zpos[i + 2]);
+			vertex(xpos[i + 3], ypos, zpos[i + 3] + (i * 1.25));
+			// vertex(xpos[i], ypos, zpos[i] + 16);
 			endShape();
 
 			beginShape();
-			vertex(xpos[i], ypos, zpos[i] - (2 * i));
-			vertex(xpos[i + 1], ypos - (((i/2) + 4)/4), zpos[i + 1]);
-			vertex(xpos[i + 2], ypos, zpos[i + 2] - (2 * i));
-			vertex(xpos[i], ypos, zpos[i] - (2 * i));
+			vertex(xpos[i + 1], ypos, zpos[i + 1] - (i * 1.25));
+			vertex(xpos[i + 2], ypos + (((i/2) + 4)/4), zpos[i + 2]);
+			vertex(xpos[i + 3], ypos, zpos[i + 3] - (i * 1.25));
+			// vertex(xpos[i], ypos, zpos[i] - (i * 1.25));
+			endShape();
+
+			// opposite triangles
+
+			fill(0, 50, 0);
+
+			beginShape();
+			vertex(xpos[i], ypos - ((i/2) + 4), zpos[i]);
+			vertex(xpos[i + 1], ypos, zpos[i + 1] + (i * 1.25));
+			vertex(xpos[i + 2], ypos - ((i/2) + 4), zpos[i + 2]);
+			endShape();
+
+			beginShape();
+			vertex(xpos[i], ypos - ((i/2) + 4), zpos[i]);
+			vertex(xpos[i + 1], ypos, zpos[i + 1] - (i * 1.25));
+			vertex(xpos[i + 2], ypos - ((i/2) + 4), zpos[i + 2]);
+			endShape();
+
+			beginShape();
+			vertex(xpos[i], ypos + (((i/2) + 4)/4), zpos[i]);
+			vertex(xpos[i + 1], ypos, zpos[i + 1] + (i * 1.25));
+			vertex(xpos[i + 2], ypos + (((i/2) + 4)/4), zpos[i + 2]);
+			endShape();
+
+			beginShape();
+			vertex(xpos[i], ypos + (((i/2) + 4)/4), zpos[i]);
+			vertex(xpos[i + 1], ypos, zpos[i + 1] - (i * 1.25));
+			vertex(xpos[i + 2], ypos + (((i/2) + 4)/4), zpos[i + 2]);
+			endShape();
+		}
+
+				if(i >= 23){
+
+			fill(0, 0, 0);
+			stroke(0, 0, 0, 10);
+
+			beginShape();
+			vertex(xpos[i + 1], ypos, zpos[i + 1] + 27.5);
+			vertex(xpos[i + 2], ypos - 15, zpos[i + 2]);
+			vertex(xpos[i + 3], ypos, zpos[i + 3] + 27.5);
+			// vertex(xpos[i], ypos, zpos[i] + 16);
+			endShape();
+
+			beginShape();
+			vertex(xpos[i + 1], ypos, zpos[i + 1] - 27.5);
+			vertex(xpos[i + 2], ypos - 15, zpos[i + 2]);
+			vertex(xpos[i + 3], ypos, zpos[i + 3] - 27.5);
+			// vertex(xpos[i], ypos, zpos[i] - (i * 1.25));
+			endShape();
+
+			beginShape();
+			vertex(xpos[i + 1], ypos, zpos[i + 1] + 27.5);
+			vertex(xpos[i + 2], ypos + 3.75, zpos[i + 2]);
+			vertex(xpos[i + 3], ypos, zpos[i + 3] + 27.5);
+			// vertex(xpos[i], ypos, zpos[i] + 16);
+			endShape();
+
+			beginShape();
+			vertex(xpos[i + 1], ypos, zpos[i + 1] - 27.5);
+			vertex(xpos[i + 2], ypos + 3.75, zpos[i + 2]);
+			vertex(xpos[i + 3], ypos, zpos[i + 3] - 27.5);
+			// vertex(xpos[i], ypos, zpos[i] - (i * 1.25));
+			endShape();
+
+			// opposite triangles
+
+			fill(0, 50, 0);
+
+			beginShape();
+			vertex(xpos[i], ypos - 15, zpos[i]);
+			vertex(xpos[i + 1], ypos, zpos[i + 1] + 27.5);
+			vertex(xpos[i + 2], ypos - 15, zpos[i + 2]);
+			endShape();
+
+			beginShape();
+			vertex(xpos[i], ypos - 15, zpos[i]);
+			vertex(xpos[i + 1], ypos, zpos[i + 1] - 27.5);
+			vertex(xpos[i + 2], ypos - 15, zpos[i + 2]);
+			endShape();
+
+			beginShape();
+			vertex(xpos[i], ypos + 3.75, zpos[i]);
+			vertex(xpos[i + 1], ypos, zpos[i + 1] + 27.5);
+			vertex(xpos[i + 2], ypos + 3.75, zpos[i + 2]);
+			endShape();
+
+			beginShape();
+			vertex(xpos[i], ypos + 3.75, zpos[i]);
+			vertex(xpos[i + 1], ypos, zpos[i + 1] - 27.5);
+			vertex(xpos[i + 2], ypos + 3.75, zpos[i + 2]);
 			endShape();
 		}
 	}
@@ -111,18 +202,13 @@ function spine(){
       z3 = 10,
       z4 = -25;
 
-  noFill();
-  bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
+  // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
   	var t = i / steps;
   	var xb = bezierPoint(x1, x2, x3, x4, t);
   	var zb = bezierPoint(z1, z2, z3, z4, t);
   	var yb = bezierPoint(y1, y2, y3, y4, t);
-  	translate(xb, yb, zb);
-  	fill(100);
-  	sphere(1);
-  	translate(-xb, -yb, -zb);
 
   	xpos.push(xb);
   	zpos.push(zb);
@@ -137,18 +223,13 @@ function spine(){
       z3 = -70,
       z4 = -90;
 
-  noFill();
-  bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
+  // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
   	var t = i / steps;
   	var xb = bezierPoint(x1, x2, x3, x4, t);
   	var zb = bezierPoint(z1, z2, z3, z4, t);
   	var yb = bezierPoint(y1, y2, y3, y4, t);
-  	translate(xb, yb, zb);
-  	fill(100);
-  	sphere(1);
-  	translate(-xb, -yb, -zb);
 
   	xpos.push(xb);
   	zpos.push(zb);
@@ -163,18 +244,13 @@ function spine(){
       z3 = -30,
       z4 = -55;
 
-  noFill();
-  bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
+  // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
   	var t = i / steps;
   	var xb = bezierPoint(x1, x2, x3, x4, t);
   	var zb = bezierPoint(z1, z2, z3, z4, t);
   	var yb = bezierPoint(y1, y2, y3, y4, t);
-  	translate(xb, yb, zb);
-  	fill(100);
-  	sphere(1);
-  	translate(-xb, -yb, -zb);
 
   	xpos.push(xb);
   	zpos.push(zb);
@@ -189,18 +265,13 @@ function spine(){
       z3 = -120,
       z4 = -110;
 
-  noFill();
-  bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
+  // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
   	var t = i / steps;
   	var xb = bezierPoint(x1, x2, x3, x4, t);
   	var zb = bezierPoint(z1, z2, z3, z4, t);
   	var yb = bezierPoint(y1, y2, y3, y4, t);
-  	translate(xb, yb, zb);
-  	fill(100);
-  	sphere(1);
-  	translate(-xb, -yb, -zb);
 
   	xpos.push(xb);
   	zpos.push(zb);
@@ -215,18 +286,13 @@ function spine(){
       z3 = -30,
       z4 = -15;
 
-  noFill();
-  bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
+  // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
   	var t = i / steps;
   	var xb = bezierPoint(x1, x2, x3, x4, t);
   	var zb = bezierPoint(z1, z2, z3, z4, t);
   	var yb = bezierPoint(y1, y2, y3, y4, t);
-  	translate(xb, yb, zb);
-  	fill(100);
-  	sphere(1);
-  	translate(-xb, -yb, -zb);
 
   	xpos.push(xb);
   	zpos.push(zb);
@@ -241,18 +307,13 @@ function spine(){
       z3 = -90,
       z4 = -70;
 
-  noFill();
-  bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
+  // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
   	var t = i / steps;
   	var xb = bezierPoint(x1, x2, x3, x4, t);
   	var zb = bezierPoint(z1, z2, z3, z4, t);
   	var yb = bezierPoint(y1, y2, y3, y4, t);
-  	translate(xb, yb, zb);
-  	fill(100);
-  	sphere(1);
-  	translate(-xb, -yb, -zb);
 
   	xpos.push(xb);
   	zpos.push(zb);
@@ -267,18 +328,13 @@ function spine(){
       z3 = -10,
       z4 = 0;
 
-  noFill();
-  bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
+  // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
   	var t = i / steps;
   	var xb = bezierPoint(x1, x2, x3, x4, t);
   	var zb = bezierPoint(z1, z2, z3, z4, t);
   	var yb = bezierPoint(y1, y2, y3, y4, t);
-  	translate(xb, yb, zb);
-  	fill(100);
-  	sphere(1);
-  	translate(-xb, -yb, -zb);
 
   	xpos.push(xb);
   	zpos.push(zb);
@@ -293,18 +349,13 @@ function spine(){
       z3 = -15,
       z4 = 0;
 
-  noFill();
-  bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
+  // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
   	var t = i / steps;
   	var xb = bezierPoint(x1, x2, x3, x4, t);
   	var zb = bezierPoint(z1, z2, z3, z4, t);
   	var yb = bezierPoint(y1, y2, y3, y4, t);
-  	translate(xb, yb, zb);
-  	fill(100);
-  	sphere(1);
-  	translate(-xb, -yb, -zb);
 
   	xpos.push(xb);
   	zpos.push(zb);
