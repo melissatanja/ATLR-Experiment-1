@@ -279,12 +279,11 @@ function triangles1(){
 				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (i + 3))/3);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-				// // vertex(xpos[i], ypos, zpos[i] + 16);
-				// endShape();
+				beginShape();
+				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (i + 3))/3);
+				endShape();
 
 				fill(200, 0, 50);
 
@@ -294,12 +293,11 @@ function triangles1(){
 				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-				// // vertex(xpos[i], ypos, zpos[i] + 16);
-				// endShape();
+				beginShape();
+				vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] + (sw * (i + 3))/3);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+				endShape();
 				}
 
 				if(zpos[i + 1] < -60 || zpos[i + 3] < -60){
@@ -312,12 +310,11 @@ function triangles1(){
 				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] - (sw * (i + 3))/1.5);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-				// // vertex(xpos[i], ypos, zpos[i] + 16);
-				// endShape();
+				beginShape();
+				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] - (sw * (i + 3))/1.5);
+				endShape();
 
 				fill(200, 0, 50);
 
@@ -327,12 +324,11 @@ function triangles1(){
 				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-				// // vertex(xpos[i], ypos, zpos[i] + 16);
-				// endShape();
+				beginShape();
+				vertex(xpos[i + 2], ypos[i + 1], zpos[i + 2] - (sw * (i + 3))/1.5);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+				endShape();
 				}
 
 			}
