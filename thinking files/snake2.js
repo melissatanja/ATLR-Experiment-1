@@ -139,13 +139,17 @@ function triangles1(){
 	for(var i = 3; i < 49; i += 2){
 
 		var sw = 1.25;
-		var lsw = 21.25;
+		var lsw = 30;
 		var sh = 1.25;
-		var lsh = 21.25;
+		var lsh = 30;
+		var bh = 0.3;
 
 		if(i < 25){
 
 			if(xpos[i + 1] < xpos[i + 3] + sw || xpos[i + 1] > xpos[i + 3] - sw){
+
+				//regular pos
+				//top
 
 				fill(200, 0, 50);
 
@@ -155,12 +159,16 @@ function triangles1(){
 				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-				// // vertex(xpos[i], ypos, zpos[i] + 16);
-				// endShape();
+				//bottom
+
+				beginShape();
+				vertex(xpos[i + 1] + (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 4)), zpos[i + 2]);
+				vertex(xpos[i + 3] + (sw * (i + 1)), ypos[i + 3], zpos[i + 3]);
+				endShape();
+
+				//irregular pos
+				//top
 
 				fill(80, 0, 10);
 
@@ -170,11 +178,16 @@ function triangles1(){
 				vertex(xpos[i + 4], ypos[i + 4] - (sh * (i + 4)), zpos[i + 4]);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// endShape();
+				//bottom
+
+				beginShape();
+				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 4)), zpos[i + 2]);
+				vertex(xpos[i + 4], ypos[i + 4] + (bh * (i + 4)), zpos[i + 4]);
+				endShape();
+
+				//regular neg
+				//top
 
 				fill(0, 200, 50);
 
@@ -184,12 +197,16 @@ function triangles1(){
 				vertex(xpos[i + 3] - (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-				// // vertex(xpos[i], ypos, zpos[i] + 16);
-				// endShape();
+				//bottom
+
+				beginShape();
+				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 4)), zpos[i + 2]);
+				vertex(xpos[i + 3] - (sw * (i + 1)), ypos[i + 3], zpos[i + 3]);
+				endShape();
+
+				//irregular neg
+				//top
 
 				fill(0, 80, 10);
 
@@ -199,17 +216,22 @@ function triangles1(){
 				vertex(xpos[i + 4], ypos[i + 4] - (sh * (i + 4)), zpos[i + 4]);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// endShape();
+				//bottom
+
+				beginShape();
+				vertex(xpos[i + 3] - (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 4)), zpos[i + 2]);
+				vertex(xpos[i + 4], ypos[i + 4] + (bh * (i + 4)), zpos[i + 4]);
+				endShape();
 
 			}
 
 			if(zpos[i + 1] > zpos[i + 3] - 10 && zpos[i + 1] < zpos[i + 3] + 10 || zpos[i + 3] > zpos[i + 1] + 10 && zpos[i + 3] < zpos[i + 1] - 10){
 
 				if(zpos[i + 1] > -60 && zpos[i + 1] < -40 || zpos[i + 3] > -60 && zpos[i + 3] < -40){
+
+				//regular neg
+				//top
 
 				fill(0, 200, 50);
 
@@ -219,12 +241,16 @@ function triangles1(){
 				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] + (sw * (i + 3))/1.5);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-				// // vertex(xpos[i], ypos, zpos[i] + 16);
-				// endShape();
+				//bottom
+
+				beginShape();
+				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] + (sw * (i + 3))/1.5);
+				endShape();
+
+				//regular pos
+				//top
 
 				fill(200, 0, 50);
 
@@ -234,12 +260,13 @@ function triangles1(){
 				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
 				endShape();
 
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-				// // vertex(xpos[i], ypos, zpos[i] + 16);
-				// endShape();
+				//bottom
+
+				beginShape();
+				vertex(xpos[i + 2], ypos[i + 1], zpos[i + 2] + (sw * (i + 3))/1.5);
+				vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+				endShape();
 				}
 
 				if(zpos[i + 1] > -40 || zpos[i + 3] > -40){
