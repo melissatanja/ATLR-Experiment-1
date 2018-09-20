@@ -3,7 +3,7 @@
 var xpos = [];
 var zpos = [];
 var ypos = [];
-var steps = 5;
+var steps = 8;
 
 var w = 700;
 var h = 700;
@@ -19,71 +19,109 @@ function draw(){
 	background(255);
 	orbitControl();
 
-	// noFill();
-	translate(-100, 0, 400);
+	translate(-200, 0, 250);
 
-	// for(var i = 5; i < 21; i += 2){
+// for(var i = 20; i < 25; i += 2){
 
-	// 	// if(xpos[i + 1] < xpos[i + 3] + 10 || xpos[i + 1] > xpos[i + 3] - 10){
-	// 	// 	xpos[i + 3] = xpos[i + 3] + i/1.25;
+// 		var sw = 1.25;
+// 		var lsw = 21.25;
+// 		var sh = 1.25;
+// 		var lsh = 21.25;
 
-	// 	fill(200, 0, 50);
-	// 	beginShape();
-	// 	vertex(xpos[i + 1] + 10, ypos, zpos[i + 1] + i/1.25);
-	// 	vertex(xpos[i + 2], ypos - i/1.5, zpos[i + 2]);
-	// 	vertex(xpos[i + 3] + 10, ypos, zpos[i + 3] + i/1.25);
-	// 	// vertex(xpos[i], ypos, zpos[i] + i/5);
-	// 	endShape();
+// 			if(xpos[i + 1] < xpos[i + 3] + sw || xpos[i + 1] > xpos[i + 3] - sw){
 
-	// 	beginShape();
-	// 	vertex(xpos[i + 1] - 10, ypos, zpos[i + 1] - i/1.25);
-	// 	vertex(xpos[i + 2], ypos - i/1.5, zpos[i + 2]);
-	// 	vertex(xpos[i + 3] - 10, ypos, zpos[i + 3] - i/1.25);
-	// 	// vertex(xpos[i], ypos, zpos[i] - i/5);
-	// 	endShape();
+// 				fill(200, 0, 50);
 
-	// // 	// beginShape();
-	// // 	// vertex(xpos[i + 1], ypos, zpos[i + 1] + i/5);
-	// // 	// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-	// // 	// vertex(xpos[i + 3], ypos, zpos[i + 3] + i/5);
-	// // 	// vertex(xpos[i], ypos, zpos[i] + i/5);
-	// // 	// endShape();
+// 				beginShape();
+// 				vertex(xpos[i + 1] + (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+// 				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+// 				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+// 				endShape();
 
-	// // 	// beginShape();
-	// // 	// vertex(xpos[i + 1], ypos, zpos[i + 1] - i/5);
-	// // 	// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-	// // 	// vertex(xpos[i + 3], ypos, zpos[i + 3] - i/5);
-	// // 	// vertex(xpos[i], ypos, zpos[i] - i/5);
-	// // 	// endShape();
+// 				// beginShape();
+// 				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+// 				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+// 				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+// 				// // vertex(xpos[i], ypos, zpos[i] + 16);
+// 				// endShape();
 
-	// 	fill(80, 0, 10);
+// 				fill(80, 0, 10);
 
-	// 		beginShape();
-	// 		vertex(xpos[i], ypos - i/1.5, zpos[i]);
-	// 		vertex(xpos[i + 1] + 10, ypos, zpos[i + 1] + i/1.25);
-	// 		vertex(xpos[i + 2], ypos - i/1.5, zpos[i + 2]);
-	// 		endShape();
+// 				beginShape();
+// 				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+// 				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+// 				vertex(xpos[i + 4], ypos[i + 4] - (sh * (i + 4)), zpos[i + 4]);
+// 				endShape();
 
-	// 		beginShape();
-	// 		vertex(xpos[i], ypos - i/1.5, zpos[i]);
-	// 		vertex(xpos[i + 1] - 10, ypos, zpos[i + 1] - i/1.25);
-	// 		vertex(xpos[i + 2], ypos - i/1.5, zpos[i + 2]);
-	// 		endShape();
+// 				// beginShape();
+// 				// vertex(xpos[i], ypos + (sh/4), zpos[i]);
+// 				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+// 				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+// 				// endShape();
 
-	// 		// beginShape();
-	// 		// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-	// 		// endShape();
+// 				fill(0, 200, 50);
 
-	// 		// beginShape();
-	// 		// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] - sw);
-	// 		// vertex(xpos[i + 
+// 				beginShape();
+// 				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+// 				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+// 				vertex(xpos[i + 3] - (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+// 				endShape();
 
-	// 		// rotate(i, [Y]);
-	// 	// }
-	// }
+// 				// beginShape();
+// 				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+// 				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+// 				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+// 				// // vertex(xpos[i], ypos, zpos[i] + 16);
+// 				// endShape();
+
+// 				fill(0, 80, 10);
+
+// 				beginShape();
+// 				vertex(xpos[i + 3] - (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+// 				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+// 				vertex(xpos[i + 4], ypos[i + 4] - (sh * (i + 4)), zpos[i + 4]);
+// 				endShape();
+
+// 				// beginShape();
+// 				// vertex(xpos[i], ypos + (sh/4), zpos[i]);
+// 				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+// 				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+// 				// endShape();
+// 			}
+
+// 			if(zpos[i + 1] > zpos[i + 3] - 10 && zpos[i + 1] < zpos[i + 3] + 10 || zpos[i + 3] > zpos[i + 1] + 10 && zpos[i + 3] < zpos[i + 1] - 10){
+
+// 				fill(0, 200, 50);
+
+// 				beginShape();
+// 				vertex(xpos[i +1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+// 				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+// 				vertex(xpos[i + 3], ypos[i + 3], zpos[i + 2]);
+// 				endShape();
+
+// 				// beginShape();
+// 				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+// 				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+// 				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+// 				// // vertex(xpos[i], ypos, zpos[i] + 16);
+// 				// endShape();
+
+// 				fill(200, 0, 50);
+
+// 				beginShape();
+// 				vertex(xpos[i + 1], ypos[i + 1], zpos[i + 2]);
+// 				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+// 				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+// 				endShape();
+
+// 				// beginShape();
+// 				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+// 				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+// 				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+// 				// // vertex(xpos[i], ypos, zpos[i] + 16);
+// 				// endShape();
+// 			}
+// 		}
 
 	spine();
 
@@ -98,14 +136,14 @@ function draw(){
 
 function triangles1(){
 
-	for(var i = 1; i < 29; i += 2){
+	for(var i = 3; i < 49; i += 2){
 
 		var sw = 1.25;
 		var lsw = 21.25;
 		var sh = 1.25;
 		var lsh = 21.25;
 
-		if(i < 15){
+		if(i < 25){
 
 			if(xpos[i + 1] < xpos[i + 3] + sw || xpos[i + 1] > xpos[i + 3] - sw){
 
@@ -166,43 +204,19 @@ function triangles1(){
 				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
 				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
 				// endShape();
-			}else{
+
+			}
+
+			if(zpos[i + 1] > zpos[i + 3] - 10 && zpos[i + 1] < zpos[i + 3] + 10 || zpos[i + 3] > zpos[i + 1] + 10 && zpos[i + 3] < zpos[i + 1] - 10){
+
+				if(zpos[i + 1] > -60 && zpos[i + 1] < -40 || zpos[i + 3] > -60 && zpos[i + 3] < -40){
 
 				fill(0, 200, 50);
 
 				beginShape();
-				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1] - sw);
+				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
 				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
-				vertex(xpos[i + 3] - (sw * (i + 3)), ypos[i + 3], zpos[i + 3] - sw);
-				endShape();
-
-				// beginShape();
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] - sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// vertex(xpos[i + 3], ypos, zpos[i + 3] - sw);
-				// // vertex(xpos[i], ypos, zpos[i] - i/5);
-				// endShape();
-
-				fill(0, 80, 10);
-
-				beginShape();
-				vertex(xpos[i + 3] - (sw * (i + 3)), ypos[i + 3], zpos[i + 3] - sw);
-				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
-				vertex(xpos[i + 4], ypos[i + 4] - (sh * (i + 4)), zpos[i + 4]);
-				endShape();
-
-				// beginShape();
-				// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-				// vertex(xpos[i + 1], ypos, zpos[i + 1] - sw);
-				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-				// endShape();
-
-				fill(200, 0, 50);
-
-				beginShape();
-				vertex(xpos[i + 1] + (sw * (i + 1)), ypos[i + 1], zpos[i + 1] + sw);
-				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
-				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3] + sw);
+				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] + (sw * (i + 3))/1.5);
 				endShape();
 
 				// beginShape();
@@ -212,147 +226,215 @@ function triangles1(){
 				// // vertex(xpos[i], ypos, zpos[i] + 16);
 				// endShape();
 
-				fill(80, 0, 10);
+				fill(200, 0, 50);
 
 				beginShape();
-				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3] + sw);
+				vertex(xpos[i + 2], ypos[i + 1], zpos[i + 2] + (sw * (i + 3))/1.5);
 				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
-				vertex(xpos[i + 4], ypos[i + 4] - (sh * (i + 4)), zpos[i + 4]);
+				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
 				endShape();
 
 				// beginShape();
-				// vertex(xpos[i], ypos + (sh/4), zpos[i]);
 				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
 				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+				// // vertex(xpos[i], ypos, zpos[i] + 16);
 				// endShape();
+				}
+
+				if(zpos[i + 1] > -40 || zpos[i + 3] > -40){
+
+					fill(0, 200, 50);
+
+				beginShape();
+				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (i + 3))/3);
+				endShape();
+
+				// beginShape();
+				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+				// // vertex(xpos[i], ypos, zpos[i] + 16);
+				// endShape();
+
+				fill(200, 0, 50);
+
+				beginShape();
+				vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] + (sw * (i + 3))/3);
+				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+				endShape();
+
+				// beginShape();
+				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+				// // vertex(xpos[i], ypos, zpos[i] + 16);
+				// endShape();
+				}
+
+				if(zpos[i + 1] < -60 || zpos[i + 3] < -60){
+
+				fill(0, 200, 50);
+
+				beginShape();
+				vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] - (sw * (i + 3))/1.5);
+				endShape();
+
+				// beginShape();
+				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+				// // vertex(xpos[i], ypos, zpos[i] + 16);
+				// endShape();
+
+				fill(200, 0, 50);
+
+				beginShape();
+				vertex(xpos[i + 2], ypos[i + 1], zpos[i + 2] - (sw * (i + 3))/1.5);
+				vertex(xpos[i + 2], ypos[i + 2] - (sh * (i + 2)), zpos[i + 2]);
+				vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+				endShape();
+
+				// beginShape();
+				// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+				// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+				// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+				// // vertex(xpos[i], ypos, zpos[i] + 16);
+				// endShape();
+				}
 
 			}
 		}
-
-		if(i > 14){
-
-			if(xpos[i + 1] < xpos[i + 3] + sw || xpos[i + 1] > xpos[i + 3] - sw){
-
-			fill(200, 0, 50);
-
-			beginShape();
-			vertex(xpos[i + 1] + lsw, ypos[i + 1], zpos[i + 1]);
-			vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
-			vertex(xpos[i + 3] + lsw, ypos[i + 3], zpos[i + 3]);
-			endShape();
-
-			// beginShape();
-			// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-			// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-			// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-			// // vertex(xpos[i], ypos, zpos[i] + 16);
-			// endShape();
-
-			fill(80, 0, 10);
-
-			beginShape();
-			vertex(xpos[i + 3] + lsw, ypos[i + 3], zpos[i + 3]);
-			vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
-			vertex(xpos[i + 4], ypos[i + 4] - lsh, zpos[i + 4]);
-			endShape();
-
-			// beginShape();
-			// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-			// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-			// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-			// endShape();
-
-			fill(0, 200, 50);
-
-			beginShape();
-			vertex(xpos[i + 1] - lsw, ypos[i + 1], zpos[i + 1]);
-			vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
-			vertex(xpos[i + 3] - lsw, ypos[i + 3], zpos[i + 3]);
-			endShape();
-
-			// beginShape();
-			// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-			// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-			// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-			// // vertex(xpos[i], ypos, zpos[i] + 16);
-			// endShape();
-
-			fill(0, 80, 10);
-
-			beginShape();
-			vertex(xpos[i + 3] - lsw, ypos[i + 3], zpos[i + 3]);
-			vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
-			vertex(xpos[i + 4], ypos[i + 4] - lsh, zpos[i + 4]);
-			endShape();
-
-			// beginShape();
-			// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-			// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-			// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-			// endShape();
-		}else{
-
-			fill(0, 200, 50);
-
-			beginShape();
-			vertex(xpos[i + 1] - lsw, ypos[i + 1], zpos[i + 1] - sw);
-			vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
-			vertex(xpos[i + 3] - lsw, ypos[i + 3], zpos[i + 3] - sw);
-			endShape();
-
-			// beginShape();
-			// vertex(xpos[i + 1], ypos, zpos[i + 1] - sw);
-			// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-			// vertex(xpos[i + 3], ypos, zpos[i + 3] - sw);
-			// // vertex(xpos[i], ypos, zpos[i] - i/5);
-			// endShape();
-
-			fill(0, 80, 10);
-
-			beginShape();
-			vertex(xpos[i + 3] - lsw, ypos[i + 3], zpos[i + 3] - sw);
-			vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
-			vertex(xpos[i + 4], ypos[i + 4] - lsh, zpos[i + 4]);
-			endShape();
-
-			// beginShape();
-			// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-			// vertex(xpos[i + 1], ypos, zpos[i + 1] - sw);
-			// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-			// endShape();
-
-			fill(200, 0, 50);
-
-			beginShape();
-			vertex(xpos[i + 1] + lsw, ypos[i + 1], zpos[i + 1] + sw);
-			vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
-			vertex(xpos[i + 3] + lsw, ypos[i + 3], zpos[i + 3] + sw);
-			endShape();
-
-			// beginShape();
-			// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-			// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-			// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
-			// // vertex(xpos[i], ypos, zpos[i] + 16);
-			// endShape();
-
-			fill(80, 0, 10);
-
-			beginShape();
-			vertex(xpos[i + 3] + lsh, ypos[i + 3], zpos[i + 3] + sw);
-			vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
-			vertex(xpos[i + 4], ypos[i + 4] - lsh, zpos[i + 4]);
-			endShape();
-
-			// beginShape();
-			// vertex(xpos[i], ypos + (sh/4), zpos[i]);
-			// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
-			// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
-			// endShape();
-
-		}
 	}
-	}
+
+	// 	if(i > 24){
+
+	// 		if(xpos[i + 1] < xpos[i + 3] + sw || xpos[i + 1] > xpos[i + 3] - sw){
+
+	// 		fill(200, 0, 50);
+
+	// 		beginShape();
+	// 		vertex(xpos[i + 1] + lsw, ypos[i + 1], zpos[i + 1]);
+	// 		vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
+	// 		vertex(xpos[i + 3] + lsw, ypos[i + 3], zpos[i + 3]);
+	// 		endShape();
+
+	// 		// beginShape();
+	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+	// 		// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+	// 		// // vertex(xpos[i], ypos, zpos[i] + 16);
+	// 		// endShape();
+
+	// 		fill(80, 0, 10);
+
+	// 		beginShape();
+	// 		vertex(xpos[i + 3] + lsw, ypos[i + 3], zpos[i + 3]);
+	// 		vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
+	// 		vertex(xpos[i + 4], ypos[i + 4] - lsh, zpos[i + 4]);
+	// 		endShape();
+
+	// 		// beginShape();
+	// 		// vertex(xpos[i], ypos + (sh/4), zpos[i]);
+	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+	// 		// endShape();
+
+	// 		fill(0, 200, 50);
+
+	// 		beginShape();
+	// 		vertex(xpos[i + 1] - lsw, ypos[i + 1], zpos[i + 1]);
+	// 		vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
+	// 		vertex(xpos[i + 3] - lsw, ypos[i + 3], zpos[i + 3]);
+	// 		endShape();
+
+	// 		// beginShape();
+	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+	// 		// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+	// 		// // vertex(xpos[i], ypos, zpos[i] + 16);
+	// 		// endShape();
+
+	// 		fill(0, 80, 10);
+
+	// 		beginShape();
+	// 		vertex(xpos[i + 3] - lsw, ypos[i + 3], zpos[i + 3]);
+	// 		vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
+	// 		vertex(xpos[i + 4], ypos[i + 4] - lsh, zpos[i + 4]);
+	// 		endShape();
+
+	// 		// beginShape();
+	// 		// vertex(xpos[i], ypos + (sh/4), zpos[i]);
+	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+	// 		// endShape();
+	// 	}else{
+
+	// 		fill(0, 200, 50);
+
+	// 		beginShape();
+	// 		vertex(xpos[i + 1] - lsw, ypos[i + 1], zpos[i + 1] - sw);
+	// 		vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
+	// 		vertex(xpos[i + 3] - lsw, ypos[i + 3], zpos[i + 3] - sw);
+	// 		endShape();
+
+	// 		// beginShape();
+	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] - sw);
+	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+	// 		// vertex(xpos[i + 3], ypos, zpos[i + 3] - sw);
+	// 		// // vertex(xpos[i], ypos, zpos[i] - i/5);
+	// 		// endShape();
+
+	// 		fill(0, 80, 10);
+
+	// 		beginShape();
+	// 		vertex(xpos[i + 3] - lsw, ypos[i + 3], zpos[i + 3] - sw);
+	// 		vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
+	// 		vertex(xpos[i + 4], ypos[i + 4] - lsh, zpos[i + 4]);
+	// 		endShape();
+
+	// 		// beginShape();
+	// 		// vertex(xpos[i], ypos + (sh/4), zpos[i]);
+	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] - sw);
+	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+	// 		// endShape();
+
+	// 		fill(200, 0, 50);
+
+	// 		beginShape();
+	// 		vertex(xpos[i + 1] + lsw, ypos[i + 1], zpos[i + 1] + sw);
+	// 		vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
+	// 		vertex(xpos[i + 3] + lsw, ypos[i + 3], zpos[i + 3] + sw);
+	// 		endShape();
+
+	// 		// beginShape();
+	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+	// 		// vertex(xpos[i + 3], ypos, zpos[i + 3] + sw);
+	// 		// // vertex(xpos[i], ypos, zpos[i] + 16);
+	// 		// endShape();
+
+	// 		fill(80, 0, 10);
+
+	// 		beginShape();
+	// 		vertex(xpos[i + 3] + lsh, ypos[i + 3], zpos[i + 3] + sw);
+	// 		vertex(xpos[i + 2], ypos[i + 2] - lsh, zpos[i + 2]);
+	// 		vertex(xpos[i + 4], ypos[i + 4] - lsh, zpos[i + 4]);
+	// 		endShape();
+
+	// 		// beginShape();
+	// 		// vertex(xpos[i], ypos + (sh/4), zpos[i]);
+	// 		// vertex(xpos[i + 1], ypos, zpos[i + 1] + sw);
+	// 		// vertex(xpos[i + 2], ypos + (sh/4), zpos[i + 2]);
+	// 		// endShape();
+
+	// 	}
+	// }
 }
 
 function spine(){
@@ -365,10 +447,15 @@ function spine(){
       y2 = 50, 
       y3 = 50, 
       y4 = 50;
-  var z1 = -15, 
+  var z1 = -30, 
       z2 = -60,
-      z3 = 10,
+      z3 = 20,
       z4 = -15;
+
+      x1 = x1 * 1.75;
+      x2 = x2 * 1.75;
+      x3 = x3 * 1.75;
+      x4 = x4 * 1.75;
 
   // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
@@ -396,6 +483,11 @@ function spine(){
       z3 = -70,
       z4 = -100;
 
+      x1 = x1 * 1.75;
+      x2 = x2 * 1.75;
+      x3 = x3 * 1.75;
+      x4 = x4 * 1.75;
+
   // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
@@ -421,6 +513,11 @@ function spine(){
       z2 = -115,
       z3 = -30,
       z4 = -55;
+
+      x1 = x1 * 1.75;
+      x2 = x2 * 1.75;
+      x3 = x3 * 1.75;
+      x4 = x4 * 1.75;
 
   // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
@@ -448,6 +545,10 @@ function spine(){
       z3 = -150,
       z4 = -130;
 
+      x1 = x1 * 1.75;
+      x2 = x2 * 1.75;
+      x3 = x3 * 1.75;
+      x4 = x4 * 1.75;
 
   // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
@@ -475,6 +576,11 @@ function spine(){
       z3 = -30,
       z4 = -15;
 
+      x1 = x1 * 1.75;
+      x2 = x2 * 1.75;
+      x3 = x3 * 1.75;
+      x4 = x4 * 1.75;
+
   // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
@@ -500,6 +606,11 @@ function spine(){
       z2 = -15,
       z3 = -90,
       z4 = -70;
+
+      x1 = x1 * 1.75;
+      x2 = x2 * 1.75;
+      x3 = x3 * 1.75;
+      x4 = x4 * 1.75;
 
   // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
@@ -527,6 +638,11 @@ function spine(){
       z3 = -10,
       z4 = 10;
 
+      x1 = x1 * 1.75;
+      x2 = x2 * 1.75;
+      x3 = x3 * 1.75;
+      x4 = x4 * 1.75;
+
   // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
@@ -553,6 +669,11 @@ function spine(){
       z3 = -5,
       z4 = 10;
 
+      x1 = x1 * 1.75;
+      x2 = x2 * 1.75;
+      x3 = x3 * 1.75;
+      x4 = x4 * 1.75;
+
   // bezier(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
 
   for(var i = 0; i <= steps; i++){
@@ -568,5 +689,8 @@ function spine(){
   	xpos.push(xb);
   	ypos.push(yb);
   	zpos.push(zb);
+
+  	// print(xpos.length);
+  	// noLoop();
   }
 }
