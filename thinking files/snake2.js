@@ -409,7 +409,7 @@ function triangles1(){
 			}
 		}
 
-		if(i > 24 && i < 49){
+		if(i > 24 && i < 50){
 
 			if(xpos[i + 1] < xpos[i + 3] + sw || xpos[i + 1] > xpos[i + 3] - sw){
 
@@ -622,6 +622,143 @@ function triangles1(){
 
 					// i+=2;
 				}
+
+				if(zpos[i + 1] > zpos[i + 3] - 10 && zpos[i + 1] < zpos[i + 3] + 10 || zpos[i + 3] > zpos[i + 1] + 10 && zpos[i + 3] < zpos[i + 1] - 10){
+
+				if(zpos[i + 1] > -60 && zpos[i + 1] < -40 || zpos[i + 3] > -60 && zpos[i + 3] < -40){
+
+					//regular neg
+					//top
+
+					fill(0, 200, 50);
+
+					beginShape();
+					vertex(xpos[i + 1] - (sw * (j + 1)), ypos[i + 1], zpos[i + 1]);
+					vertex(xpos[i + 2], ypos[i + 2] - (sh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] + (sw * (j + 3))/1.5);
+					endShape();
+
+					//bottom
+
+					beginShape();
+					vertex(xpos[i + 1] - (sw * (j + 1)), ypos[i + 1], zpos[i + 1]);
+					vertex(xpos[i + 2], ypos[i + 2] + (bh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] + (sw * (j + 3))/1.5);
+					endShape();
+
+					//regular pos
+					//top
+
+					fill(200, 0, 50);
+
+					beginShape();
+					vertex(xpos[i + 2], ypos[i + 1], zpos[i + 2] + (sw * (j + 3))/1.5);
+					vertex(xpos[i + 2], ypos[i + 2] - (sh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 3] + (sw * (j + 3)), ypos[i + 3], zpos[i + 3]);
+					endShape();
+
+					//bottom
+
+					beginShape();
+					vertex(xpos[i + 2], ypos[i + 1], zpos[i + 2] + (sw * (j + 3))/1.5);
+					vertex(xpos[i + 2], ypos[i + 2] + (bh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 3] + (sw * (j + 3)), ypos[i + 3], zpos[i + 3]);
+					endShape();
+				}
+
+				if(zpos[i + 1] > -10 && zpos[i + 1] < 5 || zpos[i + 3] > -10 && zpos[i + 3] < 5){
+
+					fill(0, 200, 50);
+
+					beginShape();
+					vertex(xpos[i + 1] - (sw * (j + 1)), ypos[i + 1], zpos[i + 1]);
+					vertex(xpos[i + 2], ypos[i + 2] - (sh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] - (sw * (j + 3)));
+					endShape();
+
+					beginShape();
+					vertex(xpos[i + 1] - (sw * (j + 1)), ypos[i + 1], zpos[i + 1]);
+					vertex(xpos[i + 2], ypos[i + 2] + (bh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] - (sw * (j + 3)));
+					endShape();
+
+					fill(200, 0, 50);
+
+					beginShape();
+					vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] - (sw * (j + 3)));
+					vertex(xpos[i + 2], ypos[i + 2] - (sh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 3] + (sw * (j + 3)), ypos[i + 3], zpos[i + 3]);
+					endShape();
+
+					beginShape();
+					vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] - (sw * (j + 3)));
+					vertex(xpos[i + 2], ypos[i + 2] + (bh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 3] + (sw * (j + 3)), ypos[i + 3], zpos[i + 3]);
+					endShape();
+				}
+
+				if(zpos[i + 1] > 5 || zpos[i + 3] > 5){
+
+					fill(0, 200, 50);
+
+					beginShape();
+					vertex(xpos[i + 1] - (sw * (j + 1)), ypos[i + 1], zpos[i + 1]);
+					vertex(xpos[i + 2], ypos[i + 2] - (sh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (j + 3))/2);
+					endShape();
+
+					beginShape();
+					vertex(xpos[i + 1] - (sw * (j + 1)), ypos[i + 1], zpos[i + 1]);
+					vertex(xpos[i + 2], ypos[i + 2] + (bh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (j + 3))/2);
+					endShape();
+
+					fill(200, 0, 50);
+
+					beginShape();
+					vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] + (sw * (j + 3))/2);
+					vertex(xpos[i + 2], ypos[i + 2] - (sh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 3] + (sw * (j + 3)), ypos[i + 3], zpos[i + 3]);
+					endShape();
+
+					beginShape();
+					vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] + (sw * (j + 3))/2);
+					vertex(xpos[i + 2], ypos[i + 2] + (bh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 3] + (sw * (j + 3)), ypos[i + 3], zpos[i + 3]);
+					endShape();
+				}
+
+				if(zpos[i + 1] < -60 || zpos[i + 3] < -60){
+
+					fill(0, 200, 50);
+
+					beginShape();
+					vertex(xpos[i + 1] - (sw * (j + 1)), ypos[i + 1], zpos[i + 1]);
+					vertex(xpos[i + 2], ypos[i + 2] - (sh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] - (sw * (j + 3))/1.5);
+					endShape();
+
+					beginShape();
+					vertex(xpos[i + 1] - (sw * (j + 1)), ypos[i + 1], zpos[i + 1]);
+					vertex(xpos[i + 2], ypos[i + 2] + (bh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 2], ypos[i + 3], zpos[i + 2] - (sw * (j + 3))/1.5);
+					endShape();
+
+					fill(200, 0, 50);
+
+					beginShape();
+					vertex(xpos[i + 2], ypos[i + 1], zpos[i + 2] - (sw * (j + 3))/1.5);
+					vertex(xpos[i + 2], ypos[i + 2] - (sh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 3] + (sw * (j + 3)), ypos[i + 3], zpos[i + 3]);
+					endShape();
+
+					beginShape();
+					vertex(xpos[i + 2], ypos[i + 1], zpos[i + 2] - (sw * (j + 3))/1.5);
+					vertex(xpos[i + 2], ypos[i + 2] + (bh * (j + 2)), zpos[i + 2]);
+					vertex(xpos[i + 3] + (sw * (j + 3)), ypos[i + 3], zpos[i + 3]);
+					endShape();
+				}
+			}
 			}
 		}
 	}
