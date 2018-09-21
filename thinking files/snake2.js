@@ -200,7 +200,7 @@ function draw(){
 
 	head();
 
-	// triangles1();          
+	triangles1();          
 
 	// triangle(xpos[30], 50, xpos[31], 50, xpos[30], 40);
 	// rotateY(-PI/10);
@@ -218,9 +218,9 @@ function head(){
 	fill(100, 40, 80);
 
 	beginShape();
-		vertex(xpos[0] - 25, ypos[0] - 5, zpos[0] - 7.5);
-		vertex(xpos[0] - 30, ypos[0] - 10, zpos[0]);
-		vertex(xpos[0] - 25, ypos[0] - 5, zpos[0] + 7.5);
+		vertex(xpos[0] - 7.5, ypos[0] - 3.75, zpos[0] - 7.5);
+		vertex(xpos[0] - 10, ypos[0] - 7.5, zpos[0]);
+		vertex(xpos[0] - 7.5, ypos[0] - 3.75, zpos[0] + 7.5);
 	endShape(CLOSE);
 
 	//irregular pos
@@ -229,33 +229,33 @@ function head(){
 	fill(80, 0, 10);
 
 	beginShape();
-		vertex(xpos[0] - 25, ypos[0] - 5, zpos[0] + 7.5);
-		vertex(xpos[0] - 30, ypos[0] - 10, zpos[0]);
-		vertex(xpos[0] - 20, ypos[0] - 11, zpos[0]);
+		vertex(xpos[0] - 7.5, ypos[0] - 3.75, zpos[0] + 7.5);
+		vertex(xpos[0] - 10, ypos[0] - 7.5, zpos[0]);
+		vertex(xpos[0] - 5, ypos[0] - 8.25, zpos[0]);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex(xpos[0] - 15, ypos[0] - mid, zpos[0] + 9);
-		vertex(xpos[0] - 20, ypos[0] - 11, zpos[0]);
-		vertex(xpos[0] - 5, ypos[0] - 12.5, zpos[0]);
+		vertex(xpos[0] - 2.5, ypos[0] - mid, zpos[0] + 9);
+		vertex(xpos[0] - 5, ypos[0] - 8.25, zpos[0]);
+		vertex((xpos[0] + xpos[1])/2, ypos[0] - 9.5, zpos[0]);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex((xpos[0] + xpos[1])/2, ypos[0] - mid, zpos[0] + 15);
-		vertex(xpos[0] - 5, ypos[0] - 12.5, zpos[0]);
-		vertex(xpos[2], ypos[0] - 14.5, zpos[2]);
+		vertex((xpos[1] + xpos[2])/2, ypos[0] - mid, zpos[0] + 15);
+		vertex((xpos[0] + xpos[1])/2, ypos[0] - 9.5, zpos[0]);
+		vertex(xpos[3], ypos[0] - 11, zpos[3]);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex(xpos[3], ypos[0] - mid, zpos[3] + 18);
-		vertex(xpos[2], ypos[0] - 14.5, zpos[2]);
-		vertex(xpos[3], ypos[0] - 15.25, zpos[3]);
+		vertex(xpos[4], ypos[0] - mid, zpos[4] + 18);
+		vertex(xpos[3], ypos[0] - 11, zpos[3]);
+		vertex(xpos[4], ypos[0] - 13, zpos[4]);
 	endShape();
 
 	beginShape();
-		vertex((xpos[4] + xpos[5])/2, ypos[0] - mid, zpos[4] + 15);
-		vertex(xpos[3], ypos[0] - 15.25, zpos[3]);
-		vertex(xpos[6], ypos[0] - 13, zpos[6]);
+		vertex((xpos[5] + xpos[6])/2, ypos[0] - mid, zpos[5] + 25);
+		vertex(xpos[4], ypos[0] - 13, zpos[4]);
+		vertex(xpos[7], ypos[0] - 9.75, zpos[7]);
 	endShape(CLOSE);
 
 	//irregular neg
@@ -264,33 +264,33 @@ function head(){
 	fill(0, 80, 50);
 
 	beginShape();
-		vertex(xpos[0] - 25, ypos[0] - 5, zpos[0] - 7.5);
-		vertex(xpos[0] - 30, ypos[0] - 10, zpos[0]);
-		vertex(xpos[0] - 20, ypos[0] - 11, zpos[0]);
+		vertex(xpos[0] - 7.5, ypos[0] - 3.75, zpos[0] - 7.5);
+		vertex(xpos[0] - 10, ypos[0] - 7.5, zpos[0]);
+		vertex(xpos[0] - 5, ypos[0] - 8.25, zpos[0]);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex(xpos[0] - 15, ypos[0] - mid, zpos[0] - 9);
-		vertex(xpos[0] - 20, ypos[0] - 11, zpos[0]);
-		vertex(xpos[0] - 5, ypos[0] - 12.5, zpos[0]);
+		vertex(xpos[0] - 2.5, ypos[0] - mid, zpos[0] - 9);
+		vertex(xpos[0] - 5, ypos[0] - 8.25, zpos[0]);
+		vertex((xpos[0] + xpos[1])/2, ypos[0] - 9.5, zpos[0]);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex((xpos[0] + xpos[1])/2, ypos[0] - mid, zpos[0] - 15);
-		vertex(xpos[0] - 5, ypos[0] - 12.5, zpos[0]);
-		vertex(xpos[2], ypos[0] - 14.5, zpos[2]);
+		vertex((xpos[1] + xpos[2])/2, ypos[0] - mid, zpos[0] - 15);
+		vertex((xpos[0] + xpos[1])/2, ypos[0] - 9.5, zpos[0]);
+		vertex(xpos[3], ypos[0] - 11, zpos[3]);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex(xpos[3], ypos[0] - mid, zpos[3] - 18);
-		vertex(xpos[2], ypos[0] - 14.5, zpos[2]);
-		vertex(xpos[3], ypos[0] - 15.25, zpos[3]);
+		vertex(xpos[4], ypos[0] - mid, zpos[4] - 18);
+		vertex(xpos[3], ypos[0] - 11, zpos[3]);
+		vertex(xpos[4], ypos[0] - 13.5, zpos[4]);
 	endShape();
 
 	beginShape();
-		vertex((xpos[4] + xpos[5])/2, ypos[0] - mid - 10, zpos[4] - 15);
-		vertex(xpos[3], ypos[0] - 15.25, zpos[3]);
-		vertex(xpos[6], ypos[0] - 13, zpos[6]);
+		vertex((xpos[5] + xpos[6])/2, ypos[0] - mid, zpos[5] - 25);
+		vertex(xpos[4], ypos[0] - 13.5, zpos[4]);
+		vertex(xpos[7], ypos[0] - 9.75, zpos[7]);
 	endShape(CLOSE);
 
 	//regular pos
@@ -299,34 +299,40 @@ function head(){
 	fill(200, 0, 50);
 
 	beginShape();
-		vertex(xpos[0] - 25, ypos[0] - 5, zpos[0] + 7.5);
-		vertex(xpos[0] - 20, ypos[0] - 11, zpos[0]);
-		vertex(xpos[0] - 15, ypos[0] - mid, zpos[0] + 9);
+		vertex(xpos[0] - 7.5, ypos[0] - 3.75, zpos[0] + 7.5);
+		vertex(xpos[0] - 5, ypos[0] - 7.5, zpos[0]);
+		vertex(xpos[0] - 2.5, ypos[0] - mid, zpos[0] + 9);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex(xpos[0] - 15, ypos[0] - mid, zpos[0] + 9);
-		vertex(xpos[0] - 5, ypos[0] - 12.5, zpos[0]);
-		vertex((xpos[0] + xpos[1])/2, ypos[0] - mid, zpos[0] + 15);
+		vertex(xpos[0] - 2.5, ypos[0] - mid, zpos[0] + 9);
+		vertex((xpos[0] + xpos[1])/2, ypos[0] - 9.5, zpos[0]);
+		vertex((xpos[1] + xpos[2])/2, ypos[0] - mid, zpos[0] + 15);
 	endShape();
 
 	beginShape();
-		vertex((xpos[0] + xpos[1])/2, ypos[0] - mid, zpos[0] + 15);
-		vertex(xpos[2], ypos[0] - 14.5, zpos[2]);
-		vertex(xpos[3], ypos[0] - mid, zpos[3] + 18);
+		vertex((xpos[1] + xpos[2])/2, ypos[0] - mid, zpos[0] + 15);
+		vertex(xpos[3], ypos[0] - 11, zpos[3]);
+		vertex(xpos[4], ypos[0] - mid, zpos[4] + 18);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex(xpos[3], ypos[0] - mid, zpos[3] + 18);
-		vertex(xpos[3], ypos[0] - 15.5, zpos[0]);
-		vertex((xpos[4] + xpos[5])/2, ypos[0] - mid, zpos[4] + 15);
+		vertex(xpos[4], ypos[0] - mid, zpos[4] + 18);
+		vertex(xpos[4], ypos[0] - 13.5, zpos[4]);
+		vertex((xpos[5] + xpos[6])/2, ypos[0] - mid, zpos[5] + 25);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex((xpos[4] + xpos[5])/2, ypos[0] - mid, zpos[4] + 15);
-		vertex(xpos[6], ypos[0] - 13, zpos[6]);
-		vertex(xpos[6], ypos[0] - mid, zpos[6] + 9);
+		vertex((xpos[5] + xpos[6])/2, ypos[0] - mid, zpos[5] + 25);
+		vertex(xpos[7], ypos[0] - 9.75, zpos[7]);
+		vertex(xpos[8] + 8, ypos[8], zpos[8]);
 	endShape(CLOSE);
+
+	// beginShape();
+	// 	vertex(xpos[7], ypos[0] - mid, zpos[7] + 9);
+	// 	vertex(xpos[8] + 8, ypos[8], zpos[8]);
+	// 	vertex(xpos[9], ypos[9] + 9, zpos[9]);
+	// endShape(CLOSE);
 
 	//regular neg
 	//top
@@ -334,34 +340,40 @@ function head(){
 	fill(0, 200, 50);
 
 	beginShape();
-		vertex(xpos[0] - 25, ypos[0] - 5, zpos[0] - 7.5);
-		vertex(xpos[0] - 20, ypos[0] - 11, zpos[0]);
-		vertex(xpos[0] - 15, ypos[0] - mid, zpos[0] - 9);
+		vertex(xpos[0] - 7.5, ypos[0] - 3.75, zpos[0] - 7.5);
+		vertex(xpos[0] - 5, ypos[0] - 7.5, zpos[0]);
+		vertex(xpos[0] - 2.5, ypos[0] - mid, zpos[0] - 9);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex(xpos[0] - 15, ypos[0] - mid, zpos[0] - 9);
-		vertex(xpos[0] - 5, ypos[0] - 12.5, zpos[0]);
-		vertex((xpos[0] + xpos[1])/2, ypos[0] - mid, zpos[0] - 15);
+		vertex(xpos[0] - 2.5, ypos[0] - mid, zpos[0] - 9);
+		vertex((xpos[0] + xpos[1])/2, ypos[0] - 9.5, zpos[0]);
+		vertex((xpos[1] + xpos[2])/2, ypos[0] - mid, zpos[0] - 15);
 	endShape();
 
 	beginShape();
-		vertex((xpos[0] + xpos[1])/2, ypos[0] - mid, zpos[0] - 15);
-		vertex(xpos[2], ypos[0] - 14.5, zpos[2]);
-		vertex(xpos[3], ypos[0] - mid, zpos[3] - 18);
+		vertex((xpos[1] + xpos[2])/2, ypos[0] - mid, zpos[0] - 15);
+		vertex(xpos[3], ypos[0] - 11, zpos[3]);
+		vertex(xpos[4], ypos[0] - mid, zpos[4] - 18);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex(xpos[3], ypos[0] - mid, zpos[3] - 18);
-		vertex(xpos[3], ypos[0] - 15.5, zpos[0]);
-		vertex((xpos[4] + xpos[5])/2, ypos[0] - mid - 10, zpos[4] - 15);
+		vertex(xpos[4], ypos[0] - mid, zpos[4] - 18);
+		vertex(xpos[4], ypos[0] - 13.5, zpos[4]);
+		vertex((xpos[5] + xpos[6])/2, ypos[0] - mid, zpos[5] - 25);
 	endShape(CLOSE);
 
 	beginShape();
-		vertex((xpos[4] + xpos[5])/2, ypos[0] - mid - 10, zpos[4] - 15);
-		vertex(xpos[6], ypos[0] - 13, zpos[6]);
-		vertex(xpos[6], ypos[0] - mid - 10, zpos[6] - 9);
+		vertex((xpos[5] + xpos[6])/2, ypos[0] - mid, zpos[5] - 25);
+		vertex(xpos[7], ypos[0] - 9.75, zpos[7]);
+		vertex(xpos[8] + 8, ypos[8] - mid, zpos[8]);
 	endShape(CLOSE);
+
+	// beginShape();
+	// 	vertex(xpos[7], ypos[0] - mid, zpos[7] - 9);
+	// 	vertex(xpos[8] + 8, ypos[8], zpos[8]);
+	// 	vertex(xpos[9], ypos[9] + 9, zpos[9]);
+	// endShape(CLOSE);
 }
 
 function triangles1(){
