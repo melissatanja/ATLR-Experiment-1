@@ -8,6 +8,8 @@ var steps = 8;
 var w = 1000;
 var h = 1000;
 
+var m;
+
 var r;
 var g;
 var b;
@@ -31,17 +33,35 @@ function setup(){
 }
 
 function draw(){
+
 	background(255);
+
+	rotateX(-PI/2);
+
+	// push();
+
+	// stroke(0);
+	// strokeWeight(5);
+	// line(-500, 0, 0, 500, 0, 0);
+	// line(0, -500, 0, 0, 500, 0);
+	// line(0, 0, -500, 0, 0, 500);
+
+	// pop();
+
 	orbitControl();
+
+	rotateY(millis()/10000);
+
+	translate(-50, -100, 250);
 
 	stroke(255);
 	strokeWeight(0.5);
 
 	// var colour = lerpColor(c1, c2, random(1));
 
-	translate(-250, 0, 0);
+	// translate(-210, 0, 66.7);
 
-	scale(3, 3, 3);
+	// scale(3, 3, 3);
 
 	rotateY(PI/2);
 
@@ -52,6 +72,8 @@ function draw(){
 	translate(-450, 0, -100);
 
 	snake();
+
+	translate(w/2, h/2);
 }
 
 function colour(){
