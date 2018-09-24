@@ -5,6 +5,8 @@ var zpos = [];
 var ypos = 50;
 var steps = 8;
 
+// var sky = createAudio('../assets/whatwouldiwantsky.mp3');
+
 var w = 1000;
 var h = 1000;
 
@@ -20,7 +22,7 @@ var yhb = [6, 6, 1, 3, 3, 1, 3, 6];
 var z = 6;
 
 var colours = [];
-// var c = new colours;
+var triangles = [];
 
 function setup(){
 	createCanvas(w, h, WEBGL);
@@ -50,18 +52,14 @@ function draw(){
 
 	orbitControl();
 
-	rotateY(millis()/10000);
+	// rotateY(millis()/10000);
 
 	translate(-50, -100, 250);
 
 	stroke(255);
 	strokeWeight(0.5);
 
-	// var colour = lerpColor(c1, c2, random(1));
-
-	// translate(-210, 0, 66.7);
-
-	// scale(3, 3, 3);
+	scale(2, 2, 2);
 
 	rotateY(PI/2);
 
@@ -76,15 +74,18 @@ function draw(){
 	translate(w/2, h/2);
 }
 
+// function mouseClicked(){
+
+// 	if(fill(r, g, b))
+// }
+
 function colour(){
 
-	// frameRate(0.5);
+	frameRate(20);
 
 	r = colours[floor(random(100))];
 	g = colours[floor(random(100))];
 	b = colours[floor(random(100))];
-
-	frameRate(30);
 }
 
 function snake(){
@@ -673,6 +674,44 @@ function triangles1(){
 					vertex(xpos[i + 3] + (sw * (i + 3)), ypos, zpos[i + 3]);
 					endShape(CLOSE);
 				}
+
+		// 		//neck corners
+		// 		if(zpos[i + 1] > -40 || zpos[i + 3] > -40){
+
+		// colour();
+		// fill(r, g, b, 100);
+
+		// 			fill(0, 200, 50);
+
+		// 			beginShape();
+		// 			vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+		// 			vertex(xpos[i + 2], ypos[i + 2] - (sh * i), zpos[i + 2]);
+		// 			vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (i + 3))/3);
+		// 			endShape();
+
+		// 			beginShape();
+		// 			vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
+		// 			vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
+		// 			vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (i + 3))/3);
+		// 			endShape();
+
+		// colour();
+		// fill(r, g, b, 100);
+
+		// 			fill(200, 0, 50);
+
+		// 			beginShape();
+		// 			vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] + (sw * (i + 3))/3);
+		// 			vertex(xpos[i + 2], ypos[i + 2] - (sh * i), zpos[i + 2]);
+		// 			vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+		// 			endShape();
+
+		// 			beginShape();
+		// 			vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] + (sw * (i + 3))/3);
+		// 			vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
+		// 			vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
+		// 			endShape();
+		// 		}
 			}
 		}
 
@@ -1270,3 +1309,12 @@ function spine(){
 
 // https://p5js.org/reference/#/p5/bezier
 // how to plot a bezier
+
+// https://books.google.ca/books?id=vd1PDwAAQBAJ&pg=PA149&lpg=PA149&dq=how+to+get+a+random+whole+number+p5&source=bl&ots=YePWb2Dwad&sig=f4VrQOnoaHa9aRWey6wcpI2Zj6U&hl=en&sa=X&ved=2ahUKEwjR8pez39LdAhXyuFkKHeLiDf8Q6AEwDXoECAMQAQ#v=onepage&q=how%20to%20get%20a%20random%20whole%20number%20p5&f=false
+// how to use "floor" function
+
+// https://forum.processing.org/two/discussion/2674/changing-color-of-each-shape-in-an-iteration
+// setup for pulling colours from an array (though not exactly what I needed)
+
+// https://p5js.org/reference/#/p5/frameRate
+// trying to slow down the flashing colours
