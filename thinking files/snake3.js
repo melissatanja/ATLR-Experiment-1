@@ -27,47 +27,42 @@ function setup(){
 
 	colours.push(floor(random(255)));
 
-	// r = colours[j];
-	// g = colours[j];
-	// b = colours[j];
-
 	}
-
-	// print(r, g, b);
-
-	// for(i = 0; i < 100; i++){
-
-	// 	var colour = fill(r, g, b, 100);
-	// 	colours.push(new colour);
-	// }
 }
 
 function draw(){
 	background(255);
 	orbitControl();
 
+	stroke(255);
+	strokeWeight(0.5);
+
 	// var colour = lerpColor(c1, c2, random(1));
 
 	translate(-250, 0, 0);
 
-	// scale(3, 3, 3);
+	scale(3, 3, 3);
 
-	// rotateY(PI/2);
+	rotateY(PI/2);
 
 	snake();
 
-	// rotateY(PI);
+	rotateY(PI);
 
-	// translate(-450, 0, -100);
+	translate(-450, 0, -100);
 
-	// snake();
+	snake();
 }
 
 function colour(){
 
+	// frameRate(0.5);
+
 	r = colours[floor(random(100))];
 	g = colours[floor(random(100))];
 	b = colours[floor(random(100))];
+
+	frameRate(30);
 }
 
 function snake(){
@@ -977,7 +972,7 @@ function triangles1(){
 
 		colour();
 		fill(r, g, b, 100);
-		
+
 						beginShape();
 						vertex(xpos[i + 2], ypos, zpos[i + 2] - (sw * (j + 3))/1.5);
 						vertex(xpos[i + 2], ypos - (sh * j), zpos[i + 2]);
