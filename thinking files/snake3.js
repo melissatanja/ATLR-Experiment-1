@@ -7,8 +7,8 @@ var steps = 8;
 
 // var sky = createAudio('../assets/whatwouldiwantsky.mp3');
 
-var w = 1000;
-var h = 1000;
+var w = 800;
+var h = 800;
 
 var m;
 
@@ -22,10 +22,20 @@ var yhb = [6, 6, 1, 3, 3, 1, 3, 6];
 var z = 6;
 
 var colours = [];
-var triangles = [];
+
+// var noiseVal;
+// var xn_increment = 0.01;
+// var zn_increment = 0.02;
+// var zn_off;
+// var yn_off;
+// var xn_off;
 
 function setup(){
 	createCanvas(w, h, WEBGL);
+
+	// frameRate(20);
+
+	// zn_off = 0;
 
 	for(i = 0; i < 101; i++){
 
@@ -36,42 +46,77 @@ function setup(){
 
 function draw(){
 
+	// xn_off = 0;
+	// yn_off = 0;
+
 	background(255);
+
+	// noiseDetail(8,0.65);
+     
+ //    for(var yn = 0; yn < height; yn++){
+	 	
+ //    	xn_off += xn_increment;
+ //    	yn_off = 0;
+     
+ //    	for(var xn = 0; xn < w; xn++){
+ //    		noiseVal = noise(xn_off, yn_off, zn_off);
+ //       		stroke(230 + (noiseVal * 25), 230 + (noiseVal * 25), 255);
+ //      		yn_off += xn_increment;
+ //      		translate(xn, yn, )
+ //       		point(xn, yn, noiseVal);
+ //     	}
+   
+ //    }
+   
+ //    zn_off += zn_increment;
+
+	// rotateX(-PI/4);
 
 	rotateX(-PI/2);
 
-	// push();
+	push();
 
-	// stroke(0);
-	// strokeWeight(5);
-	// line(-500, 0, 0, 500, 0, 0);
-	// line(0, -500, 0, 0, 500, 0);
-	// line(0, 0, -500, 0, 0, 500);
+	stroke(0);
+	strokeWeight(5);
+	line(-500, 0, 0, 500, 0, 0);
+	line(0, -500, 0, 0, 500, 0);
+	line(0, 0, -500, 0, 0, 500);
+	// stroke(100);
+	// line(0, -500, -95, 0, 500, -95);
+	// line(0, -500, 95, 0, 500, 95);
 
-	// pop();
+	pop();
 
 	orbitControl();
 
+	// ortho(-w/2, w/2, h/2, -h/2, 200);
+
+	// pointLight(250, 250, 250, mouseX - w/2, mouseY - h/2, 50);
+
 	// rotateY(millis()/10000);
 
-	translate(-50, -100, 250);
+	//to origin
+	translate(-240, 50, 55);
 
 	stroke(255);
 	strokeWeight(0.5);
 
-	scale(2, 2, 2);
+	// scale(1.5, 1.5, 1.5);
 
 	rotateY(PI/2);
+	//to 2nd quad touching xaxis and zaxis
+	translate(10, 0, 220); 
+
+	//to 3rd/4th quad, centered on zaxis
+	translate(-195, 0, -25);
 
 	snake();
 
 	rotateY(PI);
 
-	translate(-450, 0, -100);
+	translate(-475, 0, -90);
 
 	snake();
-
-	translate(w/2, h/2);
 }
 
 // function mouseClicked(){

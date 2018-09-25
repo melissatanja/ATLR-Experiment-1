@@ -184,3 +184,5 @@ beginShape();
 	vertex(xpos[i + 3] + (sw * (i + 3)), ypos, zpos[i + 3]);
 	vertex(xpos[i + 2], ypos - (sh * i), zpos[i + 2]);
 endShape();
+
+// https://processing.org/tutorials/pshape/
