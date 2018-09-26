@@ -1,14 +1,11 @@
-
 //72 things in them
 var xpos = [];
 var zpos = [];
 var ypos = 50;
 var steps = 8;
 
-// var sky = createAudio('../assets/whatwouldiwantsky.mp3');
-
-var w = 800;
-var h = 800;
+var w = 960;
+var h = 720;
 
 var m;
 
@@ -22,120 +19,52 @@ var yhb = [6, 6, 1, 3, 3, 1, 3, 6];
 var z = 6;
 
 var colours = [];
+// var c = new colours;
 
-var noiseVal;
-var xn_incr = 0.01;
-var yn_incr = 0.02;
-var zn_incr = 0.03;
-var zn_off;
-var yn_off;
-var xn_off;
-
-// var col = {
-
-// 		cyan1: color(204, 255, 255, 100),
-// 		cyan2: color(179, 255, 255, 100),
-// 		indigo1: color(204, 204, 255, 100),
-// 		indigo2: color(179, 179, 255, 100),
-// 		pink1: color(255, 204, 255, 100),
-// 		pink2: color(255, 179, 255, 100),
-// 		salmon1: color(255, 204, 204, 100),
-// 		salmon2: color(255, 179, 179, 100),
-// 		yellow1: color(255, 255, 204, 100),
-// 		yellow2: color(255, 255, 179, 100),
-// 		//10
-// 		green1: color(204, 255, 204, 100),
-// 		green2: color(179, 255, 179, 100),
-// 		blue1: color(204, 238, 255, 100),
-// 		blue2: color(179, 230, 255, 100),
-// 		purple1: color(230, 204, 255, 100),
-// 		purple2: color(218, 179, 255, 100),
-// 		orange1: color(255, 218, 179, 100),
-// 		orange2: color(255, 206, 153, 100),
-// 		green3: color(218, 255, 179, 100),
-// 		green4: color(206, 255, 153, 100),
-// 		//20
-// 		blue3: color(153, 206, 255, 100),
-// 		blue4: color(128, 193, 255, 100),
-// 		pink3: color(255, 153, 187, 100),
-// 		pink4: color(255, 128, 170, 100),
-// 		purple3: color(191, 128, 255, 100),
-// 		purple4: color(179, 102, 255, 100),
-// 		salmon3: color(255, 128, 128, 100),
-// 		salmon4: color(255, 102, 102, 100),
-// 		yellow3: color(255, 255, 128, 100),
-// 		yellow4: color(255, 255, 51, 100),
-// 		//30
-// 		orange3: color(255, 170, 128, 100),
-// 		orange4: color(255, 136, 77, 100),
-// 		orange5: color(255, 179, 102, 100),
-// 		orange6: color(255, 153, 51, 100),
-// 		green5: color(136, 204, 0, 100),
-// 		green6: color(102, 153, 0, 100),
-// 		blue5: color(102, 179, 255, 100),
-// 		blue6: color(51, 153, 255, 100),
-// 		purple5: color(184, 77, 255, 100),
-// 		purple6: color(163, 26, 255, 100),
-// 		//40
-// 		red1: color(255, 51, 51, 100),
-// 		red2: color(204, 0, 0, 100),
-// 		blue7: color(51, 102, 153, 100),
-// 		red3: color(204, 0, 68, 100),
-// 		purple7: color(128, 0, 128, 100),
-// 		cyan3: color(0, 179, 179),
-// 		green7: color(102, 102, 0),
-// 		pink5: color(255, 51, 204)
-// 		//48
-// 	}
+var webcam;
 
 function setup(){
 	createCanvas(w, h, WEBGL);
 
-	// frameRate(20);
+	// webcam = createCapture(VIDEO);
+	webcam.start();
+	// webcam.size(w, h);
+	// webcam.hide();
 
 	for(i = 0; i < 101; i++){
 
 	colours.push(floor(random(255)));
 
 	}
-
 }
 
 function draw(){
+	webcam.read();
 
-	xn_off = 2;
-	yn_off = 2;
-	zn_off = 2;
+	webcam.loadPixels();
 
-	background(255);
+	// background(255);
 
-	// noiseDetail(8,0.65);
-     
-    for(var yn = 0; yn < height; yn++){
-	 	
-    	// xn_off += xn_incr;
-    	// yn_off = 0;
-    	// zn_off += zn_incr/2;
-     
-    	for(var xn = 0; xn < w; xn++){
-    		noiseVal = noise(xn_off, yn_off, zn_off);
-       		stroke(230 + (noiseVal * 25), 230 + (noiseVal * 25), 255);
-      		// yn_off += xn_incr;
-      		//zn_off += zn_incr;
-      		translate(xn, yn, zn);
-       		sphere(noiseVal);
-     	}
+	translate(0, 0, -300);
+	tint(100);
+	texture(webcam, 0, 0, w, h);
+	plane(w, h);
+	translate(0, 0, 300);
 
-     	for(var zn = -500; zn < 500; zn++){
-       	// 	stroke(230 + (noiseVal * 25), 230 + (noiseVal * 25), 255);
-      		yn_off += yn_incr * 2;
-      		xn_off += xn_incr * 2;
-      		// translate(xn, yn, zn);
-       	// 	sphere(noiseVal);    		
-     	}
-   
-    }
-   
+	for(var px = 0; px < webcam.width; px++){
+		for(var py = 0; py < webcam.height; py++){
+			var loc = px + py * webcam.width;
+
+			var r = red(webcam.pixels[loc]);
+			var g = green(webcam.pixels[loc]);
+			var b = blue(webcam.pixels[loc]);
+
+			
+		}
+	}
+
+	// var c = webcam.pixels[(w - 1 - mouseX) + (mouseY * webcam.width)];
+	// pixels.loc = c;
 
 	// push();
 
@@ -144,20 +73,13 @@ function draw(){
 	// line(-500, 0, 0, 500, 0, 0);
 	// line(0, -500, 0, 0, 500, 0);
 	// line(0, 0, -500, 0, 0, 500);
-	// // stroke(100);
-	// // line(0, -500, -95, 0, 500, -95);
-	// // line(0, -500, 95, 0, 500, 95);
 
 	// pop();
+	// scale(0.5, 0.5, 0.5);
 
 	orbitControl();
 
 	ortho(w/2, -w/2, -h/2, h/2, 0);
-
-	// snakes();
-}
-
-function snakes(){
 
 	rotateX(-PI/4);
 
@@ -178,31 +100,33 @@ function snakes(){
 	//to 3rd/4th quad, centered on zaxis
 	translate(-195, 0, -25);
 
-	// texture(twosnakes, 0, 0, 0);
-
 	snake();
 
 	rotateY(PI);
 
 	translate(-475, 0, -90);
 
-	// texture(twosnakes, 0, 0, 0);
-
 	snake();
+
+	// print(frameCount);
 }
 
 function colour(){
 
-	// frameRate(20);
+	// frameRate(0.5);
 
-	r = colours[floor(random(100))];
-	g = colours[floor(random(100))];
-	b = colours[floor(random(100))];
+	// r = colours[floor(random(100))];
+	// g = colours[floor(random(100))];
+	// b = colours[floor(random(100))];
+
+	r = webcam.pixels[width-mouseX];
+	g = webcam.pixels[height-mouseY];
+	b = 255;
+
+	// frameRate(30);
 }
 
 function snake(){
-
-	fill(r, g, b, 100);
 
 	spine();
 
@@ -225,31 +149,36 @@ function snake(){
 
 function tail(){
 
-	// var tail1 = lerpColor(col.purple4, col.green2, 0.33);
-	// var tail2 = lerpColor(col.purple4, col.green2, 0.66);
+	colour();
+	fill(r, g, b, 100);
 
-	// fill(col.purple4);
 	beginShape();
 		vertex(390, 50, 12);
 		vertex(395, 42, 10);
 		vertex(420, 50, 10);
 	endShape(CLOSE);
 
-	// fill(tail1);
+	colour();
+	fill(r, g, b, 100);
+
 	beginShape();
 		vertex(390, 50, 5);
 		vertex(395, 42, 10);
 		vertex(420, 50, 10);
 	endShape(CLOSE);
 
-	// fill(tail2);
+	colour();
+	fill(r, g, b, 100);
+
 	beginShape();
 		vertex(390, 50, 12);
 		vertex(390, 53, 10);
 		vertex(420, 50, 10);
 	endShape(CLOSE);
 
-	// fill(col.green2);
+	colour();
+	fill(r, g, b, 100);
+
 	beginShape();
 		vertex(390, 50, 5);
 		vertex(390, 53, 10);
@@ -276,11 +205,17 @@ function head(){
 
 	//nose
 
+	colour();
+	fill(r, g, b, 100);
+
 	beginShape();
 		vertex(34, mid - 2, -6);
 		vertex(34, ypos - yht[0], 0);
 		vertex(34, mid - 2, 6);
 	endShape(CLOSE);
+
+	colour();
+	fill(r, g, b, 100);
 
 	beginShape();
 		vertex(34, mid - 2, -6);
@@ -290,13 +225,17 @@ function head(){
 
 	//only upside-down triangles draw when i is even
 
-	if(i % 2 === 0){
+	if(i % 2 == 0){
 
-
+		colour();
+		fill(r, g, b, 100);
 
 		z = 0;
 
-		if(i === 0){
+		if(i == 0){
+
+		colour();
+		fill(r, g, b, 100);
 
 			//irregular pos
 
@@ -327,7 +266,10 @@ function head(){
 			endShape(CLOSE);
 		}
 
-		if(i === 12){
+		if(i == 12){
+
+		colour();
+		fill(r, g, b, 100);
 
 			z = 17;
 
@@ -360,9 +302,10 @@ function head(){
 			endShape(CLOSE);
 		}
 
-		if(i === 14){
+		if(i == 14){
 
-
+		colour();
+		fill(r, g, b, 100);
 
 			z = 10;
 
@@ -396,6 +339,9 @@ function head(){
 		}
 
 		if(i > 1 && i < 12){
+
+		colour();
+		fill(r, g, b, 100);
 
 			//irregular pos
 
@@ -431,11 +377,17 @@ function head(){
 
 	if(i % 2 !== 0){
 
+		colour();
+		fill(r, g, b, 100);
+
 		y = mid;
 		yyt = ypos - yht[(i + 1)/2];
 		yyb = ypos - yhb[(i + 1)/2];
 
-		if(i === 1){
+		if(i == 1){
+
+		colour();
+		fill(r, g, b, 100);
 
 			y = mid - 2;
 
@@ -468,7 +420,10 @@ function head(){
 			endShape(CLOSE);
 		}
 
-		if(i === 11){
+		if(i == 11){
+
+		colour();
+		fill(r, g, b, 100);
 
 			z = 21
 
@@ -501,7 +456,10 @@ function head(){
 			endShape(CLOSE);
 		}
 
-		if(i === 13){
+		if(i == 13){
+
+		colour();
+		fill(r, g, b, 100);
 
 			z = 17
 
@@ -535,6 +493,9 @@ function head(){
 		}
 
 		if(i > 1 && i < 11){
+
+		colour();
+		fill(r, g, b, 100);
 
 			z = 6 + (1.5 * (i - 1));
 
@@ -590,6 +551,9 @@ function triangles1(){
 		//1st part of the snake, diameter grows
 		if(i < 25){
 
+		colour();
+		fill(r, g, b, 100);
+
 				//regular pos
 				//top
 	
@@ -606,6 +570,9 @@ function triangles1(){
 				vertex(xpos[i + 2], ypos + (bh * i), zpos[i + 2]);
 				vertex(xpos[i + 3] + (sw * (i + 1)), ypos, zpos[i + 3]);
 				endShape(CLOSE);
+
+		colour();
+		fill(r, g, b, 100);
 
 				//irregular pos
 				//top
@@ -624,6 +591,9 @@ function triangles1(){
 				vertex(xpos[i + 4], ypos + (bh * (i + 4)), zpos[i + 4]);
 				endShape(CLOSE);
 
+		colour();
+		fill(r, g, b, 100);
+
 				//regular neg
 				//top
 
@@ -640,6 +610,9 @@ function triangles1(){
 				vertex(xpos[i + 2], ypos + (bh * (i + 4)), zpos[i + 2]);
 				vertex(xpos[i + 3] - (sw * (i + 1)), ypos, zpos[i + 3]);
 				endShape(CLOSE);
+
+		colour();
+		fill(r, g, b, 100);
 
 				//irregular neg
 				//top
@@ -665,6 +638,9 @@ function triangles1(){
 				//2nd corner from the head
 				if(zpos[i + 1] > -60 && zpos[i + 1] < -40 || zpos[i + 3] > -60 && zpos[i + 3] < -40){
 
+		colour();
+		fill(r, g, b, 100);
+
 					//regular neg
 					//top
 
@@ -681,6 +657,9 @@ function triangles1(){
 					vertex(xpos[i + 2], ypos + (bh * (i + 2)), zpos[i + 2]);
 					vertex(xpos[i + 2], ypos, zpos[i + 2] + (sw * (i + 3))/1.5);
 					endShape(CLOSE);
+
+		colour();
+		fill(r, g, b, 100);
 
 					//regular pos
 					//top
@@ -703,7 +682,9 @@ function triangles1(){
 				//1st corner from the head
 				if(zpos[i + 1] < -60 || zpos[i + 3] < -60){
 
-					//reg neg
+		colour();
+		fill(r, g, b, 100);
+
 					beginShape();
 					vertex(xpos[i + 1] - (sw * (i + 1)), ypos, zpos[i + 1]);
 					vertex(xpos[i + 2], ypos - (sh * i), zpos[i + 2]);
@@ -716,7 +697,9 @@ function triangles1(){
 					vertex(xpos[i + 2], ypos, zpos[i + 2] - (sw * (i + 3))/1.5);
 					endShape(CLOSE);
 
-					//reg pos
+		colour();
+		fill(r, g, b, 100);
+
 					beginShape();
 					vertex(xpos[i + 2], ypos, zpos[i + 2] - (sw * (i + 3))/1.5);
 					vertex(xpos[i + 2], ypos - (sh * i), zpos[i + 2]);
@@ -729,49 +712,15 @@ function triangles1(){
 					vertex(xpos[i + 3] + (sw * (i + 3)), ypos, zpos[i + 3]);
 					endShape(CLOSE);
 				}
-
-		// 		//neck corners
-		// 		if(zpos[i + 1] > -40 || zpos[i + 3] > -40){
-
-		// c
-
-		// 			fill(0, 200, 50);
-
-		// 			beginShape();
-		// 			vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
-		// 			vertex(xpos[i + 2], ypos[i + 2] - (sh * i), zpos[i + 2]);
-		// 			vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (i + 3))/3);
-		// 			endShape();
-
-		// 			beginShape();
-		// 			vertex(xpos[i + 1] - (sw * (i + 1)), ypos[i + 1], zpos[i + 1]);
-		// 			vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
-		// 			vertex(xpos[i + 2], ypos[i + 3], zpos[i + 1] + (sw * (i + 3))/3);
-		// 			endShape();
-
-		// c
-
-		// 			fill(200, 0, 50);
-
-		// 			beginShape();
-		// 			vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] + (sw * (i + 3))/3);
-		// 			vertex(xpos[i + 2], ypos[i + 2] - (sh * i), zpos[i + 2]);
-		// 			vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
-		// 			endShape();
-
-		// 			beginShape();
-		// 			vertex(xpos[i + 2], ypos[i + 1], zpos[i + 1] + (sw * (i + 3))/3);
-		// 			vertex(xpos[i + 2], ypos[i + 2] + (bh * (i + 2)), zpos[i + 2]);
-		// 			vertex(xpos[i + 3] + (sw * (i + 3)), ypos[i + 3], zpos[i + 3]);
-		// 			endShape();
-		// 		}
 			}
 		}
 
 		//middle section of the snake, doesn't change in diameter
 		if(i > 24 && i < 50){
 
-			//reg pos
+		colour();
+		fill(r, g, b, 100);
+
 			beginShape();
 			vertex(xpos[i + 1] + lsw, ypos, zpos[i + 1]);
 			vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
@@ -784,7 +733,9 @@ function triangles1(){
 			vertex(xpos[i + 3] + lsw, ypos, zpos[i + 3]);
 			endShape(CLOSE);
 
-			//irreg pos
+		colour();
+		fill(r, g, b, 100);
+
 			beginShape();
 			vertex(xpos[i + 3] + lsw, ypos, zpos[i + 3]);
 			vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
@@ -797,7 +748,9 @@ function triangles1(){
 			vertex(xpos[i + 4], ypos + lbh, zpos[i + 4]);
 			endShape(CLOSE);
 
-			//reg neg
+		colour();
+		fill(r, g, b, 100);
+
 			beginShape();
 			vertex(xpos[i + 1] - lsw, ypos, zpos[i + 1]);
 			vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
@@ -810,7 +763,9 @@ function triangles1(){
 			vertex(xpos[i + 3] - lsw, ypos, zpos[i + 3]);
 			endShape(CLOSE);
 
-			//irreg neg
+		colour();
+		fill(r, g, b, 100);
+
 			beginShape();
 			vertex(xpos[i + 3] - lsw, ypos, zpos[i + 3]);
 			vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
@@ -829,7 +784,9 @@ function triangles1(){
 				//4th corner from the head
 				if(zpos[i + 1] > -40 || zpos[i + 3] > -40){
 
-					//reg pos
+		colour();
+		fill(r, g, b, 100);
+
 					beginShape();
 					vertex(xpos[i + 1] - lsw, ypos, zpos[i + 1]);
 					vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
@@ -842,7 +799,9 @@ function triangles1(){
 					vertex(xpos[i + 2], ypos, zpos[i + 1] + lsw/3);
 					endShape(CLOSE);
 
-					//reg neg
+		colour();
+		fill(r, g, b, 100);
+
 					beginShape();
 					vertex(xpos[i + 2], ypos, zpos[i + 1] + lsw/3);
 					vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
@@ -859,7 +818,9 @@ function triangles1(){
 				//3rd corner from the head
 				if(zpos[i + 1] < -60 || zpos[i + 3] < -60){
 
-					//reg neg
+		colour();
+		fill(r, g, b, 100);
+
 					beginShape();
 					vertex(xpos[i + 1] - lsw, ypos, zpos[i + 1]);
 					vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
@@ -872,7 +833,9 @@ function triangles1(){
 					vertex(xpos[i + 2], ypos, zpos[i + 2] - lsw/1.5);
 					endShape(CLOSE);
 
-					//reg pos
+		colour();
+		fill(r, g, b, 100);
+
 					beginShape();
 					vertex(xpos[i + 2], ypos, zpos[i + 2] - lsw/1.5);
 					vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
@@ -898,6 +861,9 @@ function triangles1(){
 
 				i+=2;
 
+		colour();
+		fill(r, g, b, 100);
+
 				//regular pos
 				//top
 
@@ -914,6 +880,9 @@ function triangles1(){
 				vertex(xpos[i + 2], ypos + (bh * j), zpos[i + 2]);
 				vertex(xpos[i + 3] + (sw * j), ypos, zpos[i + 3]);
 				endShape(CLOSE);
+
+		colour();
+		fill(r, g, b, 100);
 
 				//irregular pos
 				//top
@@ -932,6 +901,9 @@ function triangles1(){
 				vertex(xpos[i + 4], ypos + (bh * (j - 2)), zpos[i + 4]);
 				endShape(CLOSE);
 
+		colour();
+		fill(r, g, b, 100);
+
 				//regular neg
 				//top
 
@@ -948,6 +920,9 @@ function triangles1(){
 				vertex(xpos[i + 2], ypos + (bh * j), zpos[i + 2]);
 				vertex(xpos[i + 3] - (sw * j), ypos, zpos[i + 3]);
 				endShape(CLOSE);
+
+		colour();
+		fill(r, g, b, 100);
 
 				//irregular neg
 				//top
@@ -973,7 +948,9 @@ function triangles1(){
 					//7th corner from the head
 					if(zpos[i + 1] > -10 && zpos[i + 1] < 5 || zpos[i + 3] > -10 && zpos[i + 3] < 5){
 
-						//reg neg
+		colour();
+		fill(r, g, b, 100);
+
 						beginShape();
 						vertex(xpos[i + 1] - (sw * (j + 1)), ypos, zpos[i + 1]);
 						vertex(xpos[i + 2], ypos - (sh * j), zpos[i + 2]);
@@ -986,7 +963,9 @@ function triangles1(){
 						vertex(xpos[i + 2], ypos, zpos[i + 1] - (sw * (j + 3)));
 						endShape(CLOSE);
 
-						//reg pos
+		colour();
+		fill(r, g, b, 100);
+
 						beginShape();
 						vertex(xpos[i + 2], ypos, zpos[i + 1] - (sw * (j + 3)));
 						vertex(xpos[i + 2], ypos - (sh * j), zpos[i + 2]);
@@ -1003,7 +982,9 @@ function triangles1(){
 					//6th corner from the head
 					if(zpos[i + 1] > 5 || zpos[i + 3] > 5){
 
-						//reg neg
+		colour();
+		fill(r, g, b, 100);
+
 						beginShape();
 						vertex(xpos[i + 1] - (sw * (j + 1)), ypos, zpos[i + 1]);
 						vertex(xpos[i + 2], ypos - (sh * j), zpos[i + 2]);
@@ -1016,7 +997,9 @@ function triangles1(){
 						vertex(xpos[i + 2], ypos, zpos[i + 1] + (sw * (j + 3))/2);
 						endShape(CLOSE);
 
-						//reg pos
+		colour();
+		fill(r, g, b, 100);
+
 						beginShape();
 						vertex(xpos[i + 2], ypos, zpos[i + 1] + (sw * (j + 3))/2);
 						vertex(xpos[i + 2], ypos - (sh * j), zpos[i + 2]);
@@ -1033,7 +1016,9 @@ function triangles1(){
 					//5th corner from the head
 					if(zpos[i + 1] < -60 || zpos[i + 3] < -60){
 
-						//reg neg
+		colour();
+		fill(r, g, b, 100);
+
 						beginShape();
 						vertex(xpos[i + 1] - (sw * (j + 1)), ypos, zpos[i + 1]);
 						vertex(xpos[i + 2], ypos - (sh * j), zpos[i + 2]);
@@ -1046,7 +1031,9 @@ function triangles1(){
 						vertex(xpos[i + 2], ypos, zpos[i + 2] - (sw * (j + 3))/1.5);
 						endShape(CLOSE);
 
-						//reg pos
+		colour();
+		fill(r, g, b, 100);
+
 						beginShape();
 						vertex(xpos[i + 2], ypos, zpos[i + 2] - (sw * (j + 3))/1.5);
 						vertex(xpos[i + 2], ypos - (sh * j), zpos[i + 2]);
@@ -1322,20 +1309,3 @@ function spine(){
 
 // https://p5js.org/reference/#/p5/bezier
 // how to plot a bezier
-
-// https://books.google.ca/books?id=vd1PDwAAQBAJ&pg=PA149&lpg=PA149&dq=how+to+get+a+random+whole+number+p5&source=bl&ots=YePWb2Dwad&sig=f4VrQOnoaHa9aRWey6wcpI2Zj6U&hl=en&sa=X&ved=2ahUKEwjR8pez39LdAhXyuFkKHeLiDf8Q6AEwDXoECAMQAQ#v=onepage&q=how%20to%20get%20a%20random%20whole%20number%20p5&f=false
-// how to use "floor" function
-
-// https://forum.processing.org/two/discussion/2674/changing-color-of-each-shape-in-an-iteration
-// setup for pulling colours from an array (though not exactly what I needed)
-
-// https://p5js.org/reference/#/p5/frameRate
-// trying to slow down the flashing colours
-
-// https://www.youtube.com/watch?v=YoXFmo50YBI
-// What Would I Want? Sky by Animal Collective
-// https://www.youtube.com/music_policies?o=U&ar=1
-// policy for use of the song
-
-// https://p5js.org/reference/#/p5/ortho
-// camera view
