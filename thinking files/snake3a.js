@@ -45,9 +45,9 @@ function setup(){
 
 function draw(){
 
-	// if(frameCount === 30){
-	// 	capturer.start();
-	// }
+	if(frameCount === 30){
+		capturer.start();
+	}
 
 	background(255);
 
@@ -89,12 +89,12 @@ function draw(){
 
 	// snakes();
 
-	// if(frameCount < gifLength){
-	// 	capturer.capture(canvas);
-	// } else if(frameCount === gifLength){
-	// 	capturer.stop();
-	// 	capturer.save();
-	// }
+	if(frameCount < 130){
+		capturer.capture();
+	}else if(frameCount === 130){
+		capturer.stop();
+		capturer.save();
+	}
 
 	// print(frameCount);
 }
