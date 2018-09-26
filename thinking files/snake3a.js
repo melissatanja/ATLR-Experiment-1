@@ -33,7 +33,7 @@ function setup(){
 	var p5Canvas = createCanvas(w, h, WEBGL);
 	canvas = p5Canvas.canvas;
 
-	sky = createGraphics(w, h, WEBGL);
+	sky = createGraphics(w, h);
 
 	for(i = 0; i < 101; i++){
 
@@ -50,16 +50,7 @@ function draw(){
 
 	background(255);
 
-	for (var bgy = 0; bgy < h; bgy++) {
-     for (var bgx = 0; bgx < w; bgx++) {
-       // noiceDetail of the pixels octave count and falloff value       
-       sky.noiseDetail(5,0.5);
-       sky.noiseVal = sky.noise(((frameCount*10)+bgx) * sky.noiseScale,
-                        (frameCount+bgy) * sky.noiseScale);
-       sky.stroke(230 - (noiseVal * 77), 243 - (sky.noiseVal * 37), 255, 150);
-       sky.point(bgx,bgy);
-     }
-   }
+	bg();
 
 	// push();
 
@@ -118,19 +109,19 @@ function draw(){
 	// print(frameCount);
 }
 
-function bg(){
+// function bg(){
 
-	for (var y = 0; y < h; y++) {
-     for (var x = 0; x < w; x++) {
-       // noiceDetail of the pixels octave count and falloff value       
-       sky.noiseDetail(5,0.5);
-       sky.noiseVal = sky.noise(((frameCount*10)+x) * sky.noiseScale,
-                        (frameCount+y) * sky.noiseScale);
-       sky.stroke(230 - (sky.noiseVal * 77), 243 - (sky.noiseVal * 37), 255, 150);
-       sky.point(x,y);
-     }
-   }
-}
+// 	for (var y = 0; y < h; y++) {
+//      for (var x = 0; x < w; x++) {
+//        // noiceDetail of the pixels octave count and falloff value       
+//        sky.noiseDetail(5,0.5);
+//        sky.noiseVal = sky.noise(((frameCount*10)+x) * sky.noiseScale,
+//                         (frameCount+y) * sky.noiseScale);
+//        sky.stroke(230 - (sky.noiseVal * 77), 243 - (sky.noiseVal * 37), 255, 150);
+//        sky.point(x,y);
+//      }
+//    }
+// }
 
 function colour(){
 
