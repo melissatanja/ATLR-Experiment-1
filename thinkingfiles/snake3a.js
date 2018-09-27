@@ -12,11 +12,15 @@ var steps = 8;
 var w = 800;
 var h = 800;
 
-var m;
+// var m;
 
 var r;
 var g;
 var b;
+
+var xs;
+var ys;
+var scatter;
 
 var x = 34;
 var yht = [-16, -19, -21, -24, -24, -28, -26, -22];
@@ -24,7 +28,6 @@ var yhb = [6, 6, 1, 3, 3, 1, 3, 6];
 var z = 6;
 
 var colours = [];
-// var c = new colours;
 
 var noiseVal;
 var noiseScale=0.02;
@@ -35,12 +38,7 @@ function setup(){
 	var p5Canvas = createCanvas(w, h, WEBGL);
 	canvas = p5Canvas.canvas;
 
-	// frameRate(10);
-
 	sky = createGraphics(w, h);
-	// sky.background(255, 10);
-
-	stars = createGraphics(w, h, WEBGL);
 
 	for(i = 0; i < 101; i++){
 
@@ -49,9 +47,9 @@ function setup(){
 	}
 
 	capturer = new CCapture( {
-	  framerate: 60,
+	  framerate: 5,
 	  format: 'gif',
-	  worksPath: './',
+	  worksPath: '../../p5/addons/',
 	  verbose: true
 	} );
 
@@ -59,55 +57,60 @@ function setup(){
 }
 
 function draw(){
-	// print(frameCount);
 
 	background(0);
 
 	bg2();
 
-	// showStars();
+						// push();
 
-	// push();
+						// stroke(0);
+						// strokeWeight(5);
+						// line(-500, 0, 0, 500, 0, 0);
+						// line(0, -500, 0, 0, 500, 0);
+						// line(0, 0, -500, 0, 0, 500);
 
-	// stroke(0);
-	// strokeWeight(5);
-	// line(-500, 0, 0, 500, 0, 0);
-	// line(0, -500, 0, 0, 500, 0);
-	// line(0, 0, -500, 0, 0, 500);
+						// pop();
 
-	// pop();
-
-	// translate(0, 0, 300);
-
-	scale(0.5, 0.5, 0.5);
-	translate(0, -50, 0);
+						// translate(0, 0, 300);
 
 	orbitControl();
 
 	ortho(w/2, -w/2, -h/2, h/2, 0);
 
+	scale(0.5, 0.5, 0.5);
+	translate(0, -50, 0);
+
+	//putting the snakes behind the sphere allows them to show through a little bit
+	//because the stroke colour for sky is semi-transparent
 	push();
 	translate(0, 0, 300);
 	snakes();
 	pop();
 
 	push();
-	translate(0, 30, -400);
+	translate(0, 30, -430);
 	rotateY(PI/2);
 	texture(sky);
-	sphere(265);
+	sphere(275);
 	rotateY(-PI/2);
-	translate(0, -30, 400);
+	translate(0, -30, 430);
 
-	if(frameCount < 60){
+	scale(2, 2, 2);
+	showStars();
+
+	if(frameCount < 180){
 		capturer.capture(canvas);
-	}else if(frameCount === 60){
+	}else if(frameCount === 180){
 		capturer.stop();
 	}
 
-	if(frameCount === 61){
+	if(frameCount === 181){
 		capturer.save();
 	}
+	//note to self: it only saves if it's run through a server, not from the files on the computer!!!
+
+	// print(frameCount);
 }
 
 function snakes(){
@@ -118,7 +121,7 @@ function snakes(){
 
 	rotateX(-PI/6);
 
-	rotateY(frameCount/30);
+	rotateY(radians(frameCount * 3));
 
 	//to origin
 	translate(-240, 50, 55);
@@ -131,13 +134,13 @@ function snakes(){
 	translate(10, 0, 220); 
 
 	//to 3rd/4th quad, centered on zaxis
-	translate(-195, 0, -35);
+	translate(-195, 0, -25);
 
 	snake();
 
 	rotateY(PI);
 
-	translate(-475, 0, -100);
+	translate(-475, 0, -90);
 
 	snake();
 
@@ -176,89 +179,6 @@ function snake(){
 	translate(-105, 0, 230);
 }
 
-function showStars(){
-
-	for(xl = 0; xl < w; xl += 5){
-		for(yl = 0; yl < h; yl =+ 10){
-			stars.noFill();
-			stars.stroke(255, 255, 204);
-			stars.strokeWeight(0.25);
-			line(xl, yl, xl * 1.5, yl * 1.5);
-			stars.stroke(230, 255, 255);
-			line(xl, yl, xl * 1.5, yl * 1.5);
-		}
-	}	
-}
-
-function star(){
-
-	spine();
-
-	//snake width
-	var sw = 1;
-	//last snake width (before width stops increasing)
-	var lsw = 24;
-	//snake height
-	var sh = 1;
-	//last snake height (before snake height stops increasing)
-	var lsh = 24;
-	//bottom height
-	var bh = 0.3;
-	//last bottom height
-	var lbh = 7.2;
-
-	for(var i = 10; i < 50; i += 2){
-
-		beginShape();
-		vertex(xpos[i + 1] + lsw, ypos, zpos[i + 1]);
-		vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
-		vertex(xpos[i + 3] + lsw, ypos, zpos[i + 3]);
-		endShape(CLOSE);
-
-		beginShape();
-		vertex(xpos[i + 1] + lsw, ypos, zpos[i + 1]);
-		vertex(xpos[i + 2], ypos + lbh, zpos[i + 2]);
-		vertex(xpos[i + 3] + lsw, ypos, zpos[i + 3]);
-		endShape(CLOSE);
-
-		beginShape();
-		vertex(xpos[i + 3] + lsw, ypos, zpos[i + 3]);
-		vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
-		vertex(xpos[i + 4], ypos - lsh, zpos[i + 4]);
-		endShape(CLOSE);
-
-		beginShape();
-		vertex(xpos[i + 3] + lsw, ypos, zpos[i + 3]);
-		vertex(xpos[i + 2], ypos + lbh, zpos[i + 2]);
-		vertex(xpos[i + 4], ypos + lbh, zpos[i + 4]);
-		endShape(CLOSE);
-
-		beginShape();
-		vertex(xpos[i + 1] - lsw, ypos, zpos[i + 1]);
-		vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
-		vertex(xpos[i + 3] - lsw, ypos, zpos[i + 3]);
-		endShape(CLOSE);
-
-		beginShape();
-		vertex(xpos[i + 1] - lsw, ypos, zpos[i + 1]);
-		vertex(xpos[i + 2], ypos + lbh, zpos[i + 2]);
-		vertex(xpos[i + 3] - lsw, ypos, zpos[i + 3]);
-		endShape(CLOSE);
-
-		beginShape();
-		vertex(xpos[i + 3] - lsw, ypos, zpos[i + 3]);
-		vertex(xpos[i + 2], ypos - lsh, zpos[i + 2]);
-		vertex(xpos[i + 4], ypos - lsh, zpos[i + 4]);
-		endShape(CLOSE);
-
-		vertex(xpos[i + 3] - lsw, ypos, zpos[i + 3]);
-		vertex(xpos[i + 2], ypos + lbh, zpos[i + 2]);
-		vertex(xpos[i + 4], ypos + lbh, zpos[i + 4]);
-		endShape(CLOSE);
-	}
-}
-
-
 // https://editor.p5js.org/melissatanja/sketches/r16QmqAOm
 // my visualization using web editor
 
@@ -277,3 +197,7 @@ function star(){
 
 // https://p5js.org/examples/math-noise2d.html
 // 2D noise background
+
+// https://github.com/CodingTrain/website/blob/master/Tutorials/P5JS/18_p5.js_webgl/18.06_p5.js_graphics_texture/sketch.js
+// https://www.youtube.com/watch?v=3tTZlTq4Cxs
+// texture for createGraphics in WEBGL
