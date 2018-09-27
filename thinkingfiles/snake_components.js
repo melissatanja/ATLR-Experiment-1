@@ -907,6 +907,8 @@ function triangles1(){
 //this series of bezier curves maps the twisty shape of the snake
 //the coordinates of each bezier are used to draw the triangles that make up
 //the snake's body
+// the spheres that are commented out let me see the approximate size and
+// location of the triangles
 function spine(){
 
 	var x1 = 0,

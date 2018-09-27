@@ -69,16 +69,16 @@ function showStars(){
 
 }
 
- // function bg(){
+ function bg(){
 
- //  for (var bgy = 0; bgy < height; bgy++) {
- //     for (var bgx = 0; bgx < width; bgx++) {
+  for (var bgy = 0; bgy < height; bgy++) {
+     for (var bgx = 0; bgx < width; bgx++) {
 
- //       noiseDetail(5,0.5);
- //       noiseVal = noise(((frameCount*10)-bgx) * noiseScale,
- //                        (frameCount+bgy) * noiseScale);
- //       sky.stroke(230 - (noiseVal * 77), 243 - (noiseVal * 37), 255);
- //       sky.point(bgx,bgy);
- //     }
- //   }
- // }
+       noiseDetail(5,0.5);
+       noiseVal = noise(((frameCount*10)-bgx) * noiseScale,
+                        (frameCount+bgy) * noiseScale);
+       sky.stroke(230 - (noiseVal * 77), 243 - (noiseVal * 37), 255);
+       sky.point(bgx,bgy);
+     }
+   }
+ }

@@ -1,4 +1,3 @@
-let gifLength = 180;
 let canvas;
 
 var capturer;
@@ -11,8 +10,6 @@ var steps = 8;
 
 var w = 800;
 var h = 800;
-
-// var m;
 
 var r;
 var g;
@@ -36,18 +33,25 @@ var bgy;
 
 function setup(){
 	var p5Canvas = createCanvas(w, h, WEBGL);
+	//naming the canvas allows CCapture to know what to capture
 	canvas = p5Canvas.canvas;
 
 	sky = createGraphics(w, h);
 
+	//creates array of random colours
 	for(i = 0; i < 101; i++){
 
 	colours.push(floor(random(255)));
 
 	}
 
+	fill(255);
+	textFont(font);
+	textSize(30);
+	text('eidolon', 0, h/2 - 50);
+
 	capturer = new CCapture( {
-	  framerate: 5,
+	  framerate: 10,
 	  format: 'gif',
 	  worksPath: '../../p5/addons/',
 	  verbose: true
@@ -60,19 +64,8 @@ function draw(){
 
 	background(0);
 
+	//call sky graphic to be used as a texture later
 	bg2();
-
-						// push();
-
-						// stroke(0);
-						// strokeWeight(5);
-						// line(-500, 0, 0, 500, 0, 0);
-						// line(0, -500, 0, 0, 500, 0);
-						// line(0, 0, -500, 0, 0, 500);
-
-						// pop();
-
-						// translate(0, 0, 300);
 
 	orbitControl();
 
@@ -88,7 +81,6 @@ function draw(){
 	snakes();
 	pop();
 
-	push();
 	translate(0, 30, -430);
 	rotateY(PI/2);
 	texture(sky);
@@ -109,8 +101,6 @@ function draw(){
 		capturer.save();
 	}
 	//note to self: it only saves if it's run through a server, not from the files on the computer!!!
-
-	// print(frameCount);
 }
 
 function snakes(){
@@ -142,6 +132,7 @@ function snakes(){
 
 	translate(-475, 0, -90);
 
+	//one snake facing the other
 	snake();
 
 	pop();
@@ -149,13 +140,9 @@ function snakes(){
 
 function colour(){
 
-	// frameRate(0.5);
-
 	r = colours[floor(random(100))];
 	g = colours[floor(random(100))];
 	b = colours[floor(random(100))];
-
-	// frameRate(30);
 }
 
 function snake(){
@@ -201,3 +188,6 @@ function snake(){
 // https://github.com/CodingTrain/website/blob/master/Tutorials/P5JS/18_p5.js_webgl/18.06_p5.js_graphics_texture/sketch.js
 // https://www.youtube.com/watch?v=3tTZlTq4Cxs
 // texture for createGraphics in WEBGL
+
+// https://p5js.org/examples/transform-rotate.html
+// rotating in degrees with radians()
