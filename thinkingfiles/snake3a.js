@@ -45,11 +45,6 @@ function setup(){
 
 	}
 
-	fill(255);
-	textFont(font);
-	textSize(30);
-	text('eidolon', 0, h/2 - 50);
-
 	capturer = new CCapture( {
 	  framerate: 10,
 	  format: 'gif',
@@ -57,7 +52,7 @@ function setup(){
 	  verbose: true
 	} );
 
-	capturer.start();
+	// capturer.start();
 }
 
 function draw(){

@@ -4,6 +4,7 @@ var noiseScale=0.02;
 var w = 800;
 var h = 800;
 
+//night colour
 function bg2(){
 
   sky.background(0);
@@ -21,13 +22,28 @@ function bg2(){
    }
  }
 
+//day colour
+ function bg(){
+
+  for (var bgy = 0; bgy < height; bgy++) {
+     for (var bgx = 0; bgx < width; bgx++) {
+
+       noiseDetail(5,0.5);
+       noiseVal = noise(((frameCount*10)-bgx) * noiseScale,
+                        (frameCount+bgy) * noiseScale);
+       sky.stroke(230 - (noiseVal * 77), 243 - (noiseVal * 37), 255);
+       sky.point(bgx,bgy);
+     }
+   }
+ }
+
 function showStars(){
 
   for(i = 0; i < 500; i++){
 
     ys = 0;
     xs = 0;
-    zs = -500;
+    zs = 0;
     scatterx = random(-200, 200);
     scattery = random(-100, 100);
     scatterz = random(-75, 75);
@@ -66,19 +82,4 @@ function showStars(){
     translate(xs * 2, -ys * 2, -zs * 2);
     translate(-xs * 1.25, -ys / 10, -zs + 50);
   }
-
 }
-
- function bg(){
-
-  for (var bgy = 0; bgy < height; bgy++) {
-     for (var bgx = 0; bgx < width; bgx++) {
-
-       noiseDetail(5,0.5);
-       noiseVal = noise(((frameCount*10)-bgx) * noiseScale,
-                        (frameCount+bgy) * noiseScale);
-       sky.stroke(230 - (noiseVal * 77), 243 - (noiseVal * 37), 255);
-       sky.point(bgx,bgy);
-     }
-   }
- }
